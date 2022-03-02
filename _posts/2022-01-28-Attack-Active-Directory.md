@@ -82,9 +82,9 @@ Extrae los usuarios validos del sistema.
 
 Si tenemos una lista de usuarios validos hacemos el ataque **as-rep roast**
 
-```
+<b><i><em style="font-size: 13px;">
 El tostado AS-REP es una técnica que permite recuperar hashes de contraseña para usuarios que tienen seleccionada la propiedad No requiere autenticación previa de Kerberos: esos hashes se pueden descifrar sin conexión, de manera similar a como se hace en T1208: Kerberoasting
-```
+</em></i></b>
 
 GetNPUsers intentará recopilar las respuestas AS_REP que no son de autenticación previa para una lista determinada de nombres de usuario. Estas respuestas se cifrarán con la contraseña del usuario, que luego se puede descifrar sin conexión.
 - <a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/GetNPUsers.py" target="_blank">GetNPUsers</a>
