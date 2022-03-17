@@ -41,18 +41,18 @@ PORT      STATE SERVICE       VERSION
 Dominio:
 - vulnnet-rst.local
 
-#### SmbClient:
+### SmbClient:
 
 En la enumeracion de samba listamos todos los archivos compartidos, y luego inspecionaremos uno a uno.
 - <a href="https://www.samba.org/samba/download" target="_blank">SmbClient</a>
 
 ![smbclient_listing](https://user-images.githubusercontent.com/47476901/131402701-ce0fe921-d129-4471-82c6-24501f0e1308.png)
 
-- SMB: VulnNet-Enterprise-Anonymous
+- **SMB: VulnNet-Enterprise-Anonymous**
 
 ![VulnNet-Enterprise-Anonymous](https://user-images.githubusercontent.com/47476901/131402731-ef0d65e7-9a2d-44f0-ab8b-2f70068d502b.png)
 
-- SMB: VulnNet-Business-Anonymous
+- **SMB: VulnNet-Business-Anonymous**
 
 ![VulnNet-Business-Anonymous](https://user-images.githubusercontent.com/47476901/131402753-1cfcbf4f-28d5-48ca-b453-9857aa0b8ff3.png)
 
@@ -60,11 +60,11 @@ Analizamos los nombres que nos muestan los ficheros para crear un diccionario pe
 
 ![recogeruser](https://user-images.githubusercontent.com/47476901/131402776-869348bf-d3b3-4911-9ef5-d36760d71c3b.png)
 
-Diccionario:
+**Diccionario:**
 
 ![diccionario](https://user-images.githubusercontent.com/47476901/131402807-9f24c798-b8d9-49fb-88a5-31e39fee9995.png)
 
-#### Kerbrute:
+### Kerbrute:
 
 Hacemos fuerza bruta para saber que usuarios son validos a nivel de dominio usando nuestro diccionario creado anteriormente
 - <a href="https://github.com/ropnop/kerbrute" target="_blank">Kerbrute</a>
@@ -78,7 +78,7 @@ Extrae los usuarios validos del sistema.
 
 ![lookupsid](https://user-images.githubusercontent.com/47476901/131402828-1f05eac2-80d5-494e-8599-cda86e24c50a.png)
 
-#### impacket-GetNPUsers:
+### impacket-GetNPUsers:
 
 Si tenemos una lista de usuarios validos hacemos el ataque **as-rep roast**
 
@@ -91,7 +91,7 @@ GetNPUsers intentará recopilar las respuestas AS_REP que no son de autenticaci�
 
 ![impacket-GetNPUsers](https://user-images.githubusercontent.com/47476901/131402842-2e67866b-7d8a-4e54-b42c-99af25852bb5.png)
 
-#### John The Ripper:
+### John The Ripper:
 Crackeamos el hash para sacar la contraseña del usuario
 - <a href="https://www.openwall.com/john/" target="_blank">JohnTheRipper</a>
 
@@ -99,7 +99,7 @@ Crackeamos el hash para sacar la contraseña del usuario
 - Usuario: t-skid
 - Contraseña: tj072889*  
 
-#### Crackmapexec:
+### Crackmapexec:
 Esta herramienta se usa para recopilar informacion sobre el active directory.
 - <a href="https://github.com/byt3bl33d3r/CrackMapExec" target="_blank">Crackmapexec</a>
 
@@ -115,19 +115,19 @@ Lo inspeccionamos y encontramos una ruta interesante.
 
 ![spiderresult](https://user-images.githubusercontent.com/47476901/131402873-285ae9b8-6e24-4fda-ac50-77a84663e196.png)
 
-#### smbclient NETLOGON:
+### smbclient NETLOGON:
 Entramos a la carpeta netlogon y extraemos el fichero para analizarlo posteriormente.
 
 ![netlogon](https://user-images.githubusercontent.com/47476901/131402885-6c21b663-7759-45f2-972a-68d564fa9f1e.png)
 
-#### Password User:
+**Password User:**
 En el script encontramos una contraseña de un usuario
 
 ![password user](https://user-images.githubusercontent.com/47476901/131402900-e6f113d0-5982-4411-bea3-0fb77f1f2dc7.png)
 Una vez tengamos la contraseña del usuario probamos a ver que hashes podemos dumpear con la tecnica de pass the hash
 
 ## Explotation: <a name="Explotation"></a>
-#### Pass the hash
+### Pass the hash
 
 Con esto podemos darnos acceso al servidor sin necesidad de aportar una contraseña
 
