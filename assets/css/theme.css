@@ -141,7 +141,8 @@ blockquote {
 
 b,
 strong {
-	font-weight: bolder
+	font-weight: bolder;
+	color: #44c56b;	
 }
 
 small {
@@ -396,7 +397,8 @@ h2,
 
 h3,
 .h3 {
-	font-size: 1.75rem
+	font-size: 1.75rem;
+	color: #6685c9;
 }
 
 h4,
