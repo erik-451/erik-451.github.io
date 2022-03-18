@@ -201,7 +201,7 @@ Por eso este fallo del sistema fue tan grave, juntando asi un RCE y un LPE causa
 Exploits y mas info: <a href="https://eromang.zataz.com/2010/12/20/exim-4-69-remote-code-execution/" target="_blank">EXIM 4.69 RCE</a>
 
 Dejo un video de como se explota este fallo de seguridad, usando un modulo de metasploit:
-<a href="https://www.youtube.com/watch?v=DnSgOGIxjaQ" target="_blank">https://www.youtube.com/watch?v=DnSgOGIxjaQ</a></b>
+<a href="https://www.youtube.com/watch?v=DnSgOGIxjaQ" target="_blank">https://www.youtube.com/watch?v=DnSgOGIxjaQ</a>
 <br>
 <a name="logscorruptos"></a>
 ### 5- Logs corruptos
