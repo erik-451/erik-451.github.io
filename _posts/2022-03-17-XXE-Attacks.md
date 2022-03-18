@@ -10,7 +10,7 @@ tags: [ Web, Bug Bounty, Payloads ]
 ---
 Algo metodos de inyectar una XXE.
 
-# Table of Contents</a>
+# Table of Contents
 1. [Payloads](#XXEpayloads)
 2. [SSRF](#XXEaSSRF)
 3. [Blind en peticion](#BlindXXE)
