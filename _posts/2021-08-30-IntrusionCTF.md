@@ -249,7 +249,7 @@ cat var/log/exim4/mainlog
       
 Crea un nuevo usuario que este en el grupo de administador con una contraseña hasheada en md5.
 
-<li> Este es el Local Privilege Escalation<br>
+<li> Este es el Local Privilege Escalation<br></li>
 **La forma en la que se convierte en root**
 
 ```bash
