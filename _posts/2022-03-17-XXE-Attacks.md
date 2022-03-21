@@ -15,7 +15,7 @@ Algo metodos de inyectar una XXE.
 2. [Payloads](#XXEpayloads)<br>
    2.1. [XXE a LFI](#XXEaLFI)<br>
    2.2. [XXE a SSRF](#XXEaSSRF)<br>
-   2.3. [XXE a RCE](#XXEaRCE)
+   2.3. [XXE a RCE](#XXEaRCE)<br>
    2.4  [XXE a DOS](#XXEaDOS)
 6. [Blind en peticion](#BlindXXE)
 7. [Bypass XXE](#XXEBypass)
