@@ -113,7 +113,7 @@ Como se validaba el token en la cookie podemos mandar la peticion para el cambio
 
 ---
 ### 6- CSRF sin Referrer <a name="CSRFsinReferrer"></a>
-Indicamos que no exista el Referer en el exploit del CSRF usando el tag de meta
+Indicamos que no exista el Referer en el exploit del CSRF usando el tag de meta.
 
 ```html
 <html>
