@@ -8,7 +8,7 @@ beforetoc: ""
 toc: false
 tags: [ Web, Bug Bounty, Payloads ]
 ---
-Ataques CSRF y distintas formas de implementarlo.
+Ataques CSRF y sus distintas formas de implementarlo.
 
 # Table of Contents
 1. [Vulnerabilidad CSRF sin defensas](#CSRFsinDefensas)
