@@ -3,7 +3,7 @@ layout: post
 title:  "CSRF Attacks"
 author: erik
 categories: [ Web ]
-image: https://user-images.githubusercontent.com/47476901/158905099-e3bd6d01-a91d-486b-8d64-db4dd55f97cd.png
+image: https://user-images.githubusercontent.com/47476901/159375082-f0ca6711-c380-41c8-b82d-9e1515ff729e.png
 beforetoc: ""
 toc: false
 tags: [ Web, Bug Bounty, Payloads ]
