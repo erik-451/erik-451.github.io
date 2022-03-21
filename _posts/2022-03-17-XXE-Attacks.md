@@ -38,7 +38,9 @@ Si el servidor dispone del modulo "expect" de PHP, seria posible ejecutar codigo
 Ejemplo: 
 [XXE a RCE](#XXEaRCE)
 - **Denegacion del servicio**
+
 ---
+
 ### 2- XXE payloads <a name="XXEpayloads"></a>
 **2.1- LFI Test** <a name="XXEaLFI"></a><br>
 Ver archivos internos del servidor
