@@ -27,7 +27,7 @@ Ataques CSRF y sus distintas formas de implementarlo.
 **CSRF basico correo**<br>
 Hace una peticion a la pagina en la ruta donde se cambia el correo y con el javascript confirma la peticion, lo cual se cambiará el correo con solo visitar la pagina.
 
-Codigo de https://atacante.com/malicioso.html
+Codigo de https://web-atacante.com/malicioso.html
 
 ```html
 <html>
