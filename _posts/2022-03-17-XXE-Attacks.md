@@ -78,7 +78,8 @@ Abusando del modulo expect de php(Se requiere tener este modulo en el servidor)*
 ### 3- XXE blind en peticion <a name="BlindXXE"></a>
 **3.1- Ver si existe una XXE sin que se vea en la peticion**
 
-Una forma de identificar una XML blind en una petición: Si la aplicación incrusta los datos enviados en un documento XML y luego se analiza el documento como pasa en una solicitud SOAP de backend. Podemos probar a inyectar XInclude que es una parte de la especificación XML que permite crear un documento XML a partir de subdocumentos, Ej:
+Una forma de identificar una XML blind en una petición: Si la aplicación incrusta los datos enviados en un documento XML y luego se analiza el documento como pasa en una solicitud SOAP de backend. Podemos probar a inyectar XInclude que es una parte de la especificación XML que permite crear un documento XML a partir de subdocumentos.<br>
+Ejemplo:
 ```xml
 <foo xmlns:xi="http://www.w3.org/2001/XInclude"> <xi:include parse="text" href="file:///etc/passwd"/></foo>
 
