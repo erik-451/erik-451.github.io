@@ -23,24 +23,21 @@ Algo metodos de inyectar una XXE.
 ---
 
 ### 1- Peligros en los ataques XXE <a name="PeligrosXXE"></a>
-- **Enumerar puertos y dominios en direcciones internas a la red:**<br>
-A través de las peticiones ir enumerando la red<br>
-Ejemplo: 
-[XXE a SSRF](#XXEaSSRF)
-
-- **Enumerar puertos abiertos en otras direcciones extrernas**<br>
- Hacer una enumeracion de puertos mediante peticiones.
- 
 - **Exfiltrar informacion critica:**<br>
 Seria posible obtener archivos internos del servidor incluso en servicios de la red local, lo cual es peligroso.<br>
 Ejemplo: 
 [XXE a LFI](#XXEaLFI)
-- **Denegacion del servicio**
+- **Enumerar puertos y dominios en direcciones internas a la red:**<br>
+A través de las peticiones ir enumerando la red<br>
+Ejemplo: 
+[XXE a SSRF](#XXEaSSRF)
+- **Enumerar puertos abiertos en otras direcciones extrernas**<br>
+ Hacer una enumeracion de puertos mediante peticiones.
 - **Ejecutar codigo:** <br>
 Si el servidor dispone del modulo "expect" de PHP, seria posible ejecutar codigo y poder llegar a poder ejecutar comandos.<br>
 Ejemplo: 
 [XXE a RCE](#XXEaRCE)
-
+- **Denegacion del servicio**
 ---
 ### 2- XXE payloads <a name="XXEpayloads"></a>
 **2.1- LFI Test** <a name="XXEaLFI"></a><br>
