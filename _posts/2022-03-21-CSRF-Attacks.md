@@ -22,7 +22,7 @@ Ataques CSRF y distintas formas de implementarlo.
 ---
 
 ### 1- Vulnerabilidad CSRF sin defensas <a name="CSRFsinDefensas"></a>
-**CSRF basico correo**
+**CSRF basico correo**<br>
 Hace una peticion a la pagina en la ruta donde se cambia el correo y con el javascript confirma la peticion, lo cual se cambiará el correo con solo visitar la pagina.
 
 Codigo de https://atacante.com/malicioso.html
@@ -45,7 +45,7 @@ Dependiendo del metodo de peticion, se puede hacer con GET
 ```
 ---
 ### 3- CSRF donde la validación del token depende de la presencia del token <a name="CSRFenPresencia"></a>
-**No verifica el token CSRF, se eliminia y se bypassea**
+No verifica el token CSRF, se eliminia y se bypassea
 
 ```html
 <html>
@@ -60,7 +60,8 @@ Dependiendo del metodo de peticion, se puede hacer con GET
 ```
 ---
 ### 4- El token CSRF no está vinculado a la sesión del usuario <a name="CSRFnoVinculado"></a>
-**4.1- Podemos usar el mismo Token CSRF en un usuario que en otro al no estar vinculado a la sesión del usuario** <a name="MismoTokenUsuarios"></a>
+**4.1- Usar el mismo token en ambos usuarios**<br>
+Podemos usar el mismo Token CSRF en un usuario que en otro al no estar vinculado a la sesión del usuario** <a name="MismoTokenUsuarios"></a>
 Mi token: U6vJiRteqjSX46XRk57k6saqolEcdDvQ sirve para otros usuario tambien.
 ```html
 <html>
@@ -73,7 +74,7 @@ Mi token: U6vJiRteqjSX46XRk57k6saqolEcdDvQ sirve para otros usuario tambien.
 	</body>
 </html>
 ```
-**4.2- El token CSRF no esta vinvulado a la sesion.** <a name="SesionTokenNoVinculado"></a>
+**4.2- El token CSRF no esta vinvulado a la sesion.** <a name="SesionTokenNoVinculado"></a><br>
 Por lo que se podria usar el mismo csrf token y la misma csrf key en una cuenta que en otra para cambiar el correo  
 ```html
 <html>
