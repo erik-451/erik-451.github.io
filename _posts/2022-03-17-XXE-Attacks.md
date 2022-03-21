@@ -12,10 +12,10 @@ Algo metodos de inyectar una XXE.
 
 # Table of Contents
 1. [Peligros en los ataques XXE](#PeligrosXXE)
-2. [Payloads](#XXEpayloads)
-    2.1. [XXE a LFI](#XXEaLFI)
-    2.2. [XXE a SSRF](#XXEaSSRF)
-    2.3. [XXE a RCE](#XXEaRCE)
+2. [Payloads](#XXEpayloads)<br>
+   2.1. [XXE a LFI](#XXEaLFI)<br>
+   2.2. [XXE a SSRF](#XXEaSSRF)<br>
+   2.3. [XXE a RCE](#XXEaRCE)
 6. [Blind en peticion](#BlindXXE)
 7. [Bypass XXE](#XXEBypass)
 8. [Out-Of-Band](#OutOFBand)
@@ -23,27 +23,27 @@ Algo metodos de inyectar una XXE.
 ---
 
 ### 1- Peligros en los ataques XXE <a name="PeligrosXXE"></a>
-- **Enumerar puertos y dominios en direcciones internas a la red:**
-A través de las peticiones ir enumerando la red
+- **Enumerar puertos y dominios en direcciones internas a la red:**<br>
+A través de las peticiones ir enumerando la red<br>
 Ejemplo: 
 [XXE a SSRF](#XXEaSSRF)
 
-- **Enumerar puertos abiertos en otras direcciones extrernas**
+- **Enumerar puertos abiertos en otras direcciones extrernas**<br>
  Hacer una enumeracion de puertos mediante peticiones.
  
-- **Exfiltrar informacion critica:**
-Seria posible obtener archivos internos del servidor incluso en servicios de la red local, lo cual es peligroso.
+- **Exfiltrar informacion critica:**<br>
+Seria posible obtener archivos internos del servidor incluso en servicios de la red local, lo cual es peligroso.<br>
 Ejemplo: 
 [XXE a LFI](#XXEaLFI)
 - **Denegacion del servicio**
-- **Ejecutar codigo:** 
-Si el servidor dispone del modulo "expect" de PHP, seria posible ejecutar codigo y poder llegar a poder ejecutar comandos.
+- **Ejecutar codigo:** <br>
+Si el servidor dispone del modulo "expect" de PHP, seria posible ejecutar codigo y poder llegar a poder ejecutar comandos.<br>
 Ejemplo: 
 [XXE a RCE](#XXEaRCE)
 
 ---
 ### 2- XXE payloads <a name="XXEpayloads"></a>
-**2.1- LFI Test** <a name="XXEaLFI"></a>
+**2.1- LFI Test** <a name="XXEaLFI"></a><br>
 Ver archivos internos del servidor
 
 ```xml
@@ -51,7 +51,7 @@ Ver archivos internos del servidor
 <foo>&xxe;</foo>
 ```
 
-**2.2- XXE a SSRF** <a name="XXEaSSRF"></a>
+**2.2- XXE a SSRF** <a name="XXEaSSRF"></a><br>
 Enumerar la red local del servidor
 ```xml
 <?xml version="1.0"?>
@@ -61,7 +61,7 @@ Enumerar la red local del servidor
 <foo>&xxe;</foo>
 ```
 
-**2.3-XXE a RCE** <a name="XXEaRCE"></a>
+**2.3-XXE a RCE** <a name="XXEaRCE"></a><br>
 Abusando del modulo expect de php(Se requiere tener este modulo en el servidor)**
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?>
