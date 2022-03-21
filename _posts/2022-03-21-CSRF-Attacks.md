@@ -17,8 +17,10 @@ Ataques CSRF y distintas formas de implementarlo.
 4. [El token CSRF no está vinculado a la sesión del usuario](#CSRFnoVinculado)<br>
    4.1. [Mismo token entre usuarios](#MismoTokenUsuarios)<br>
    4.2. [Token no vinculado a la sesion](#SesionTokenNoVinculado)
-5. [El token se duplica en la cookie](#TokenDuplicaCookie)
 6. [CSRF sin Referrer](#CSRFsinReferrer)
+5. [El token se duplica en la cookie](#TokenDuplicaCookie)
+
+
 ---
 
 ### 1- Vulnerabilidad CSRF sin defensas <a name="CSRFsinDefensas"></a>
