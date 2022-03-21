@@ -62,7 +62,8 @@ Enumerar la red local del servidor
 ```
 
 **2.3-XXE a RCE** <a name="XXEaRCE"></a><br>
-Abusando del modulo expect de php(Se requiere tener este modulo en el servidor)**
+Abusando del modulo expect de php para ejecutar comandos
+(Se requiere tener este modulo en el servidor)
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?>
  <!DOCTYPE foo [ <!ELEMENT foo ANY >
