@@ -63,7 +63,7 @@ No verifica el token CSRF, se eliminia y se bypassea
 ---
 ### 4- El token CSRF no está vinculado a la sesión del usuario <a name="CSRFnoVinculado"></a>
 **4.1- Usar el mismo token en ambos usuarios**<br>
-Podemos usar el mismo Token CSRF en un usuario que en otro al no estar vinculado a la sesión del usuario** <a name="MismoTokenUsuarios"></a>
+Podemos usar el mismo Token CSRF en un usuario que en otro al no estar vinculado a la sesión del usuario <a name="MismoTokenUsuarios"></a><br>
 Mi token: U6vJiRteqjSX46XRk57k6saqolEcdDvQ sirve para otros usuario tambien.
 ```html
 <html>
