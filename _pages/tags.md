@@ -21,7 +21,7 @@ permalink: /tags
   {% assign t = tag | first %}
   {% assign posts = tag | last %}
 
-  <h4 class="mt-5 mb-neg-30" id="{{ t }}">📌 <u>{{ t }}</u></h4>
+  <h4 style="color: #fff" class="mt-5 mb-neg-30" id="{{ t }}">📌 <u>{{ t }}</u></h4>
   <div class="blog-grid-container">
     {% for post in posts %}
       {% if post.tags contains t %}
