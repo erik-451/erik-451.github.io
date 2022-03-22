@@ -95,4 +95,4 @@ Ya somos root!
 
 ![root txt](https://user-images.githubusercontent.com/47476901/123010650-ec7c2680-d3b6-11eb-8035-5f510a93a872.png)
 
-#### Maquina Completada
+**Maquina Completada**
