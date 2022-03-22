@@ -8,7 +8,7 @@ beforetoc: ""
 toc: false
 tags: [ Web, Bug Bounty, Payloads ]
 ---
-Ataques CSRF y sus distintas formas de implementarlo.
+Ataques CSRF (Cross-site request forgery) o falsificación de petición en sitios cruzados es un tipo de exploit malicioso de un sitio web en el que operaciones no autorizadas son ejecutadas por un usuario en el cual el sitio web confía.
 
 # Table of Contents
 1. [Vulnerabilidad CSRF sin defensas](#CSRFsinDefensas)
