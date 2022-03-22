@@ -16,7 +16,7 @@ En esta máquina vulneraremos un dominio de Active Directory.
 2. [Explotation](#Explotation)
 
 ## Enumeration AD: <a name="EnumerationAD"></a>
-#### Nmap:
+### Nmap:
 ```bash
 PORT      STATE SERVICE       VERSION
 53/tcp    open  domain        Simple DNS Plus
@@ -38,7 +38,7 @@ PORT      STATE SERVICE       VERSION
 49680/tcp open  msrpc         Microsoft Windows RPC
 49716/tcp open  msrpc         Microsoft Windows RPC
 ```
-Dominio:
+**Dominio:**
 - vulnnet-rst.local
 
 ### SmbClient:
@@ -71,20 +71,20 @@ Hacemos fuerza bruta para saber que usuarios son validos a nivel de dominio usan
 
 ![kerbrute](https://user-images.githubusercontent.com/47476901/131402818-de939578-3873-45ef-a4e9-4b306357a722.png)
 
-#### impacket-lookupsid:
+### Impacket-lookupsid:
 
 Extrae los usuarios validos del sistema.
 - <a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/lookupsid.py" target="_blank">Lookupsid</a>
 
 ![lookupsid](https://user-images.githubusercontent.com/47476901/131402828-1f05eac2-80d5-494e-8599-cda86e24c50a.png)
 
-### impacket-GetNPUsers:
+### Impacket-GetNPUsers:
 
 Si tenemos una lista de usuarios validos hacemos el ataque **as-rep roast**
 
-<li><b><i><em style="font-size: 13px;">
+<li><i><em style="font-size: 13px;">
 El ataque de "AS-REP Roast" es una técnica que permite recuperar hashes de contraseña para usuarios que tienen seleccionada la propiedad "No requiere autenticación previa" de Kerberos: esos hashes se pueden descifrar sin conexión, de manera similar a como se hace en T1208: (Kerberoasting)
-</em></i></b></li>
+</em></i></li>
 
 GetNPUsers intentará recopilar las respuestas AS_REP que no son de autenticación previa para una lista determinada de nombres de usuario. Estas respuestas se cifrarán con la contraseña del usuario, que luego se puede descifrar sin conexión.
 - <a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/GetNPUsers.py" target="_blank">GetNPUsers</a>
@@ -115,7 +115,7 @@ Lo inspeccionamos y encontramos una ruta interesante.
 
 ![spiderresult](https://user-images.githubusercontent.com/47476901/131402873-285ae9b8-6e24-4fda-ac50-77a84663e196.png)
 
-### smbclient NETLOGON:
+### Smbclient NETLOGON:
 Entramos a la carpeta netlogon y extraemos el fichero para analizarlo posteriormente.
 
 ![netlogon](https://user-images.githubusercontent.com/47476901/131402885-6c21b663-7759-45f2-972a-68d564fa9f1e.png)
