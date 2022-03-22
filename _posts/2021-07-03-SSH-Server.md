@@ -2,7 +2,7 @@
 layout: post
 title:  "SSH Server"
 author: erik
-categories: [ SSH ]
+categories: [ Protocolos ]
 image: https://user-images.githubusercontent.com/47476901/128584491-96367ea6-31d6-4904-aa32-3e84a6069ca1.png
 beforetoc: ""
 toc: false
