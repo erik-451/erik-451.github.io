@@ -151,7 +151,7 @@ Recursos para aplicar en un bugbounty
 **LaTex Injection:**
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/LaTeX%20Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/LaTeX%20Injection)
 
-**OAuth: **
+**OAuth:**
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/OAuth](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/OAuth)
 
 **XPATH Injection:**
