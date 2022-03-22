@@ -19,7 +19,7 @@ Configuracion basica de SSH
 
 ---
 
-**1-Configurar SSH en el servidor** <a name="configssh"></a>
+### 1-Configurar SSH en el servidor <a name="configssh"></a>
 
 Para comenzar con el SSH debemos ejecutar el siguiente comando:
 
@@ -29,7 +29,7 @@ ssh-keygen
 
 ![ssh-keygen](https://user-images.githubusercontent.com/47476901/128584495-375f4c41-f1ed-44b2-a6e7-da3c3a9dc5c7.png)
 
-**2-Servidor reconocible en la red** <a name="sshreconocible"></a>
+### 2-Servidor reconocible en la red <a name="sshreconocible"></a>
 
 Para que nuestro ordenador pueda conectarse al servidor tienen que estar en la misma red, es decir si lanzamos un ping tienen que responder ambos.
 
@@ -41,7 +41,7 @@ Para que nuestro ordenador pueda conectarse al servidor tienen que estar en la m
 
 ![PcToServer](https://user-images.githubusercontent.com/47476901/128584503-5039e056-b93c-42e9-b199-5b92c78d7cd9.png)
 
-**3-Configurar SSH en el PC** <a name="configsshpc"></a>
+### 3-Configurar SSH en el PC <a name="configsshpc"></a>
 
 Hacemos lo mismo que en el servidor:
 ```bash
@@ -49,7 +49,7 @@ ssh-keygen
 ```
 ![ssh-keygenPC](https://user-images.githubusercontent.com/47476901/128584508-69e8c690-d46c-44b8-9fd2-9be81f8783b4.png)
 
-**4-Compartir clave pública** <a name="publickey"></a>
+### 4-Compartir clave pública <a name="publickey"></a>
 
 Para poder conectarnos al servidor sin tener que usar la contraseña podemos mandar nuestra clave pública al "autorized_keys" del servidor.
 
@@ -59,7 +59,7 @@ cat .\.ssh\id_rsa.pub | ssh erik@192.168.1.155 "cat >> ~/.ssh/authorized_keys"
 
 ![autorized](https://user-images.githubusercontent.com/47476901/128584510-6b4afd14-b4ed-4830-a7d0-76310e1911a5.png)
 
-**5-Login al SSH** <a name="sshlogin"></a>
+### 5-Login al SSH <a name="sshlogin"></a>
 
 Al acabar esto ya podemos logearnos al ssh sin necesidad de contraseña.
 
