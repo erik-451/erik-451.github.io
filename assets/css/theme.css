@@ -1175,7 +1175,7 @@ pre code {
 	}
 	.col-md-6 {
 		flex: 0 0 50%;
-		max-width: 50%
+		/*max-width: 50%*/
 	}
 	.col-md-7 {
 		flex: 0 0 58.3333333333%;
@@ -9485,7 +9485,7 @@ button.bg-dark:focus {
 
 @media (min-width: 992px) {
 	.text-lg-left {
-		text-align: left !important
+		text-align: center !important
 	}
 	.text-lg-right {
 		text-align: right !important
