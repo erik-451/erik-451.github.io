@@ -392,28 +392,32 @@ h1,
 
 h2,
 .h2 {
-	font-size: 2rem
+	font-size: 2rem;
+	color: ;
 }
 
 h3,
 .h3 {
 	font-size: 1.75rem;
-	color: #6685c9;
+	color: #7da6ff;
 }
 
 h4,
 .h4 {
-	font-size: 1.5rem
+	font-size: 1.5rem;
+	color: #e5f370;
 }
 
 h5,
 .h5 {
-	font-size: 1.25rem
+	font-size: 1.25rem;
+	color: #f39756;
 }
 
 h6,
 .h6 {
-	font-size: 1rem
+	font-size: 1rem;
+	color: #75f356;
 }
 
 .lead {
