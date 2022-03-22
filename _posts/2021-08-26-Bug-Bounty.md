@@ -21,9 +21,9 @@ Recursos para aplicar en un bugbounty
 
 ---
 
-## Bug Bounty Platforms: <a name="plataforms"></a>
+### Bug Bounty Platforms: <a name="plataforms"></a>
 
-Open For Signup
+**Open For Signup**
 
 - [HackerOne](https://www.hackerone.com/)
 - [Bugcrowd](https://www.bugcrowd.com/)
@@ -36,7 +36,7 @@ Open For Signup
 - [Hackenproof](https://hackenproof.com/)
 
 
-Invite based Platforms
+**Invite based Platforms**
 
 - [Synack](https://www.synack.com/red-team/)
 - [Cobalt](https://cobalt.io/)
@@ -48,7 +48,7 @@ Invite based Platforms
 
 ---
 
-## Learn Bug Bounty: <a name="learnbounty"></a>
+### Learn Bug Bounty: <a name="learnbounty"></a>
 
 - [Guide to learn hacking-Youtube](https://www.youtube.com/watch?v=2TofunAI6fU)
 - [Portswigger Academy-Web](https://portswigger.net/web-security)
@@ -65,105 +65,105 @@ Invite based Platforms
 
 ---
 
-## Vulnerabilities: <a name="vulnerabilities"></a>
+### Vulnerabilities: <a name="vulnerabilities"></a>
 
-#### XSS:
+**XSS:**
 - [https://github.com/erik-451/XSS](https://github.com/erik-451/XSS)
 - [https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/xss.md](https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/xss.md)
 - [https://github.com/ismailtasdelen/xss-payload-list](https://github.com/ismailtasdelen/xss-payload-list)
 - [https://github.com/dwisiswant0/findom-xss](https://github.com/dwisiswant0/findom-xss)
 
-#### SQLi:
+**SQLi:**
 - [https://github.com/erik-451/SQLi](https://github.com/erik-451/SQLi)
 - [https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/sqli.md
 ](https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/sqli.md)
 - [https://github.com/Y000o/sql_injection_basic/blob/master/sql_injection_basic.md](https://github.com/Y000o/sql_injection_basic/blob/master/sql_injection_basic.md)
 - [https://geekwire.eu/sql-injection/](https://geekwire.eu/sql-injection/)
 
-#### SSRF:
+**SSRF:**
 - [https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/ssrf.md](https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/ssrf.md)
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Request%20Forgery](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Request%20Forgery)
 
-#### CRLF:
+**CRLF:**
 - [https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/crlf.md](https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/crlf.md)
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/CRLF%20Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/CRLF%20Injection)
 - [https://owasp.org/www-community/attacks/csrf](https://owasp.org/www-community/attacks/csrf)
 
-#### CSV-Injection:
+**CSV-Injection:**
 - [https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/csv-injection.md](https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/csv-injection.md)
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/CSV%20Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/CSV%20Injection)
 
-#### Command Injection:
+**Command Injection**
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Command%20Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Command%20Injection)
 
-#### Directory Traversal:
+**Directory Traversal:**
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Directory%20Traversal](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Directory%20Traversal)
 
-#### LFI:
+**LFI:**
 - [https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/lfi.md](https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/lfi.md)
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion)
 - [https://github.com/D35m0nd142/LFISuite](https://github.com/D35m0nd142/LFISuite)
 - [https://hipotermia.pw/bb/bugpoc-lfi-challenge](https://hipotermia.pw/bb/bugpoc-lfi-challenge)
 - [https://raw.githubusercontent.com/emadshanab/LFI-Payload-List/master/LFI%20payloads.txt](https://raw.githubusercontent.com/emadshanab/LFI-Payload-List/master/LFI%20payloads.txt)
 
-#### XXE:
+**XXE:**
 - [https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/xxe.md](https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/xxe.md)
 - [https://corneacristian.medium.com/top-25-xxe-bug-bounty-reports-ab4ca662afad](https://corneacristian.medium.com/top-25-xxe-bug-bounty-reports-ab4ca662afad)
 - [https://gosecure.github.io/xxe-workshop/](https://gosecure.github.io/xxe-workshop/)
 
-#### Open-Redirect:
+**Open-Redirect:**
 - [https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/open-redirect.md](https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/open-redirect.md)
 
-#### RCE:
+**RCE:**
 - [https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/rce.md](https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/rce.md)
 
-#### Crypto:
+**Crypto:**
 - [https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/crypto.md](https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/crypto.md)
 
-#### Template Injection:
+**Template Injection:**
 - [https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/template-injection.md](https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/template-injection.md)
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection)
 
-#### XSLT:
+**XSLT:**
 - [https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/xslt.md](https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/xslt.md)
 
-#### Content Injection:
+**Content Injection:**
 - [https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/content-injection.md](https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/content-injection.md)
 
-#### LDAP Injection:
+**LDAP Injection:**
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/LDAP%20Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/LDAP%20Injection)
 
-#### NoSQL Injection:
+**NoSQL Injection:**
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/NoSQL%20Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/NoSQL%20Injection)
 
-#### CSRF Injection:
+**CSRF Injection:**
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/CSRF%20Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/CSRF%20Injection)
 
-#### GraphQL Injection:
+**GraphQL Injection:**
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/GraphQL%20Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/GraphQL%20Injection)
 
-#### IDOR:
+**IDOR:**
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Insecure%20Direct%20Object%20References](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Insecure%20Direct%20Object%20References)
 
-#### ISCM:
+**ISCM:**
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Insecure%20Source%20Code%20Management](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Insecure%20Source%20Code%20Management)
 
-#### LaTex Injection:
+**LaTex Injection:**
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/LaTeX%20Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/LaTeX%20Injection)
 
-#### OAuth: 
+**OAuth: **
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/OAuth](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/OAuth)
 
-#### XPATH Injection:
+**XPATH Injection:**
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XPATH%20Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XPATH%20Injection)
 
-#### Bypass Upload Tricky:
+**Bypass Upload Tricky:**
 - [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Upload%20Insecure%20Files](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Upload%20Insecure%20Files)
 - [https://github.com/bminossi/AllVideoPocsFromHackerOne](https://github.com/bminossi/AllVideoPocsFromHackerOne)
 
 ---
 
-## PHP Shells: <a name="phpshells"></a>
+### PHP Shells: <a name="phpshells"></a>
 
 * [Simple Shell](https://github.com/backdoorhub/shell-backdoor-list/blob/master/shell/php/simple-shell.php)
 
@@ -203,9 +203,9 @@ Invite based Platforms
 
 
 
-## Subdomain  and  TakeOver  Tools: <a name="subtakeover"></a>
+### Subdomain  and  TakeOver  Tools: <a name="subtakeover"></a>
 
-#### SubDomain TakeOver:
+**SubDomain TakeOver:**
 
 - SubDomain TakeOver Scanner by 0x94: [https://github.com/antichown/subdomain-takeover](https://github.com/antichown/subdomain-takeover)
 
@@ -220,7 +220,7 @@ Invite based Platforms
     - El script de adquisición extrae el registro CNAME de todos los subdominios a la vez. TakeOver ahorra tiempo a los investigadores y aumenta las posibilidades de encontrar una vulnerabilidad de takeover de subdominios.
 
 
-#### Tools for Subdomains:
+**Tools for Subdomains:**
 
 - SubR3con: 
     - [https://github.com/rohitcoder/SubR3con](https://github.com/rohitcoder/SubR3con)
@@ -240,7 +240,7 @@ Invite based Platforms
 
 ---
 
-## BurpSuite Extensions: <a name="burpextensions"></a>
+### BurpSuite Extensions: <a name="burpextensions"></a>
 
 - [Sitemap Extractor](https://github.com/PortSwigger/site-map-extractor)
 - [Param-Miner](https://github.com/PortSwigger/param-miner)
@@ -251,38 +251,38 @@ Invite based Platforms
 
 ---
 
-## Usefull Things: <a name="usefullthings"></a>
+### Usefull Things: <a name="usefullthings"></a>
 
-#### 6 Methods to bypass CSRF protection on a web application:
+**6 Methods to bypass CSRF protection on a web application:**
 - [https://shahmeeramir.com/methods-to-bypass-csrf-protection-on-a-web-application-3198093f6599](https://shahmeeramir.com/methods-to-bypass-csrf-protection-on-a-web-application-3198093f6599)
 
-#### Exploit - Microsoft Exchange Server DlpUtils AddTenantDlpPolicy RCE:
+**Exploit - Microsoft Exchange Server DlpUtils AddTenantDlpPolicy RCE:**
 - [https://cxsecurity.com/issue/WLB-2020090079](https://cxsecurity.com/issue/WLB-2020090079)
 
-#### Java deserelizacion:
+**Java deserelizacion:**
 - [https://github.com/ikkisoft/SerialKiller](https://github.com/ikkisoft/SerialKiller)
 - [https://pivotal.io/security/cve-2020-5398](https://pivotal.io/security/cve-2020-5398)
 - [https://github.com/motikan2010/CVE-2020-5398/](https://github.com/motikan2010/CVE-2020-5398/)
 
-#### Herramientas y trucos para el bug bounty:
+**Herramientas y trucos para el bug bounty:**
 - [https://dhiyaneshgeek.github.io/bug/bounty/2020/02/06/recon-with-me/](https://dhiyaneshgeek.github.io/bug/bounty/2020/02/06/recon-with-me/)
 
-#### Mapa de vulnerabilidades:
+**Mapa de vulnerabilidades:**
 - [https://www.xmind.net/m/2QyGbx/](https://www.xmind.net/m/2QyGbx/)
 
-#### Mapa del bug bounty:
+**Mapa del bug bounty:**
 - [https://www.xmind.net/m/VWTC3u/](https://www.xmind.net/m/VWTC3u/)
 
-#### 21 Cosas que puedes hacer con una XSS:
+**21 Cosas que puedes hacer con una XSS:**
 - [https://s0md3v.github.io/21-things-xss/](https://s0md3v.github.io/21-things-xss/)
 
-#### Tips para Bug Bounty:
+**Tips para Bug Bounty:**
 - [https://github.com/devanshbatham/Awesome-Bugbounty-Writeups](https://github.com/devanshbatham/Awesome-Bugbounty-Writeups)
 
-#### Info para principiantes:
+**Info para principiantes:**
 - [https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters](https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters)
 
-## Ayudas: 
+### Ayudas: 
 
 - Cheat Sheet Python: [https://blog.underc0de.org/cheat-sheet-python/](https://blog.underc0de.org/cheat-sheet-python/)
 
@@ -293,9 +293,9 @@ Invite based Platforms
 	- [A lot of Tools](https://technisette.com/p/tools)
 - Consultas de búsqueda de Shodan: [https://github.com/jakejarvis/awesome-shodan-queries](https://github.com/jakejarvis/awesome-shodan-queries)
 
-## Payloads:
+### Payloads:
 
-#### SQLi
+**SQLi**
 
 - SQL Web Shell:
 
@@ -315,7 +315,7 @@ Invite based Platforms
 1,group_concat(column_name) /*%%!asd%%%%*/from/*%%!asd%%%%*/information_schema.columns where table_name=’users’ --+
 ```
 
-#### XSS
+**XSS**
 
 - XSS One to bypass Incapsula WAF:
 
@@ -338,7 +338,7 @@ Invite based Platforms
 <object data="data:text/html;base64,PHNjcmlwdD5hbGVydCgneHNzJyk8L3NjcmlwdD4="></object>
 ```
 
-#### SSRF
+**SSRF**
 
 -  SSRF Bypass list for localhost (127.0.0.1):
 
