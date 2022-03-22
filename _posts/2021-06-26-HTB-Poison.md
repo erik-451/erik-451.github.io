@@ -147,4 +147,4 @@ Ya somos root
 
 ![root txt](https://user-images.githubusercontent.com/47476901/124363970-607bc180-dc36-11eb-9876-f709a43b82a7.png)
 
-#### Maquina Completada
+**Maquina Completada**
