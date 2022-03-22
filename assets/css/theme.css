@@ -9612,12 +9612,12 @@ a.text-light:focus {
 }
 
 .text-dark {
-	color: #ececec !important;
+	color: #fff !important;
 }
 
 a.text-dark:hover,
 a.text-dark:focus {
-	color: #343a40 !important
+	color: #c0c0c0 !important
 }
 
 .text-body {
