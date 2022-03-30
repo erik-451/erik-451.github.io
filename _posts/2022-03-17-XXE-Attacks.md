@@ -25,7 +25,7 @@ Ataques XXE (XML External Entity) son vulnerabilidades que surgen en las aplicac
 
 ### Peligros en los ataques XXE <a name="PeligrosXXE"></a>
 - **Exfiltrar informacion critica:**<br>
-Seria posible obtener archivos internos del servidor incluso en servicios de la red local, lo cual es peligroso.<br>
+Seria posible obtener archivos internos del servidor, lo cual es peligroso.<br>
 Ejemplo: 
 [XXE a LFI](#XXEaLFI)
 - **Enumerar puertos y dominios en direcciones internas a la red:**<br>
