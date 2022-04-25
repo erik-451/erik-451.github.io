@@ -38,7 +38,7 @@ Use  `ssh-copy-id root@192.168.20.134` to avoid having to put passwords in the s
 We download the software and create a configuration file
 And we send it to a file where we will configure it in our own way.
 ```bash
-k0sctl init > k0sctl.yaml`
+k0sctl init > k0sctl.yaml
 ```
 In my case it is: **k0sctl.yaml**
 ```bash
