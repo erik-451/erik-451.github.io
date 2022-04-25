@@ -23,11 +23,11 @@ Kubernetes is a portable and extensible open source platform for managing worklo
 - Minimum 2 machines
 
 My virtual machines
-
+I installed Ubuntu Lite on both machines.
 ![VM](https://user-images.githubusercontent.com/47476901/165136286-5466bfdf-0ae2-4cbf-b358-dedf31eb9406.png)
 
 I use WSL as machine for the installation.
-- Minimum "4 GB RAM" preferably 8-16GB for more fluide
+- Minimum "4 GB RAM" preferably 8-16GB for more performance.
 
 ![wsl](https://user-images.githubusercontent.com/47476901/165136298-8ff550a2-ee8d-4383-8ab4-62792dfec457.png)
 
