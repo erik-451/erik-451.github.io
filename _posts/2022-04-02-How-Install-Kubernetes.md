@@ -8,7 +8,7 @@ beforetoc: ""
 toc: false
 tags: [ Devops ]
 ---
-Kubernetes is a portable and extensible open source platform for managing workloads and services. Kubernetes makes it easy to automate and declaratively configure.
+Kubernetes is a portable and extensible open source platform for managing workloads and services. It makes easy to automate and declaratively configure.
 
 # Table of Contents
 1. [Environment requirements](#requirements)
