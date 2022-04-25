@@ -8,39 +8,39 @@ beforetoc: ""
 toc: false
 tags: [ Devops ]
 ---
-Kubernetes es una plataforma portable y extensible de código abierto para administrar cargas de trabajo y servicios. Kubernetes facilita la automatización y la configuración declarativa.
+Kubernetes is a portable and extensible open source platform for managing workloads and services. Kubernetes makes it easy to automate and declaratively configure.
 
 # Table of Contents
-1. [Requisitos entorno](#Requisitos)
-2. [Configurar los logins SSH a las maquinas](#configmaquinasssh)
-3. [Descargar k0sctl](#descargarK0sctl)
-4. [Instalar kubernetes en las maquinas usando k0sctl](#instalarkuberneteshosts)<br>
-5. [Cliente Kubernetes](#ClienteKubernetes)
+1. [Environment requirements](#requirements)
+2. [Configure SSH logins to machines](#confighostsssh)
+3. [Download k0sctl](#downloadK0sctl)
+4. [Install kubernetes on machines using k0sctl](#installkuberneteshosts)<br>
+5. [Kubernetes clients](#Kubernetesclient)
 
 ---
 
-
-## Requisitos entorno  <a name="Requisitos"></a>
+## Environment requirements  <a name="requirements"></a>
 - Minimum 2 machines
 
-Mis maquinas virtuales
+My virtual machines
+
 ![VM](https://user-images.githubusercontent.com/47476901/165136286-5466bfdf-0ae2-4cbf-b358-dedf31eb9406.png)
 
-Uso WSL como maquina para la instalacion.
-- Minimo "4 GB RAM" preferiblemente 8-16GB para mayor fluidez
+I use WSL as machine for the installation.
+- Minimum "4 GB RAM" preferably 8-16GB for more fluide
 
 ![wsl](https://user-images.githubusercontent.com/47476901/165136298-8ff550a2-ee8d-4383-8ab4-62792dfec457.png)
 
-### Configurar los logins SSH a las maquinas <a name="configmaquinasssh"></a>
-Usar  `ssh-copy-id root@192.168.20.134` para no tener que poner contraseñas en el login de ssh y facilitar la instalacion.
+### Configure SSH logins to machines <a name="confighostsssh"></a>
+Use  `ssh-copy-id root@192.168.20.134` to avoid having to put passwords in the ssh login and facilitate the installation.
 
-### Descargar k0sctl <a name="descargarK0sctl"></a>
-Nos descargamos el software y creamos un fichero de configuracion
-Y lo mandamos a un fichero donde lo configuraremos a nuestra manera. 
+### Download k0sctl <a name="downloadK0sctl"></a>
+We download the software and create a configuration file
+And we send it to a file where we will configure it in our own way.
 ```bash
 k0sctl init > k0sctl.yaml`
 ```
-En mi caso es: **k0sctl.yaml**
+In my case it is: **k0sctl.yaml**
 ```bash
 apiVersion: k0sctl.k0sproject.io/v1beta1
 kind: Cluster
@@ -66,8 +66,8 @@ spec:
     version: 1.23.5+k0s.0
 ```
 
-### Instalar kubernetes en las maquinas usando k0sctl <a name="instalarkuberneteshosts"></a>
-Ya tenemos todo listo, corremos el programa que nos configura la instalacion automatizando el proceso
+### Install kubernetes on machines using k0sctl <a name="installkuberneteshosts"></a>
+We already have everything ready, we run the program that configures the installation, automating the process
 
 ```bash
 k0sctl apply --config k0sctl.yaml
@@ -76,52 +76,55 @@ k0sctl apply --config k0sctl.yaml
 ![Installing](https://user-images.githubusercontent.com/47476901/165136327-31092a45-200b-4694-a202-f449beabad63.png)
 
 
-### Instalar cliente de kubernetes en nuestra maquina <a name="instalarkuberneteshosts"></a>
+### Install kubernetes client on our machine <a name="installkuberneteshosts"></a>
 ```bash
 sudo apt install kubernetes-client
 ```
-Mandamos la configuracion de kubernetes a un fichero llamado kubeconfig 
+We send the kubernetes configuration to a file called kubeconfig.
 ```bash
 k0sctl kubeconfig > kubeconfig
 ```
 
-Para que se use esta configuracion indicamos con la variable KUBECONFIG donde se ubica
+In order to use this configuration, we indicate with the KUBECONFIG variable where it is located.
 ```bash
 export KUBECONFIG=/opt/kubernetes/kubeconfig
 ```
-### Cliente Kubernetes <a name="ClienteKubernetes"></a>
-**Listar los nodos activos usamos:**
+### Kubernetes client <a name="Kubernetesclient"></a>
+**List active nodes:**
 ```bash
 kubectl get nodes
 ```
-Comprobamos que ya estan activos
+We check that they are already active
+
 ![list-nodes](https://user-images.githubusercontent.com/47476901/165136351-c17db351-0422-4309-a240-de7f94005476.png)
 
 
-**Listar informacion del cluster al que estamos conectados:**
+**List information of the cluster to which we are connected:**
 
 ```bash
 kubectl cluster-info
 ```
+
 ![cluster-info](https://user-images.githubusercontent.com/47476901/165136364-97c99f98-ae7e-480a-8a42-fe86a51335b9.png)
 
 
-**Listar informacion detallada de todos los nodos:**
-Podemos ver informacion como el tipo de sistema operativo, el uso cpu, ram, la configuracion del nodo....
+**List detailed information of all nodes:**
+We can see information such as the type of operating system, the use of cpu, ram, the configuration of the node...
 
 ```bash
 kubectl describe node
 ```
 
-**Especificar descripcion de un nodo:**
+**Specify description of a node:**
 
 ```bash
 kubectl describe node kubernetes-1 
 ```
+
 ![node-info](https://user-images.githubusercontent.com/47476901/165136388-0ca6419e-1d8b-4324-9ea2-28f0e9f6ba17.png)
 
 
-**Breve resumen del hardware:**
+**Brief summary of the hardware:**
 ```bash
 kubectl top node
 ```
