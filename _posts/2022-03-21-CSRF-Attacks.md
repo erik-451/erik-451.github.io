@@ -8,7 +8,7 @@ beforetoc: ""
 toc: false
 tags: [ Web, Bug Bounty, Payloads ]
 ---
-CSRF attacks (Cross-site request forgery) or cross-site request forgery is a type of malicious exploit that aims to perform unauthorized operations that will be executed by a user that the website trusts.
+CSRF attacks (Cross-site request forgery) is a type of malicious exploit that aims to perform unauthorized operations that will be executed by a user that the website trusts.
 
 # Table of Contents
 1. [CSRF vulnerability without defenses](#CSRFwithoutDefenses)
