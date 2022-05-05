@@ -93,7 +93,7 @@ scp yom@192.168.56.1:/home/yom/temporary/exim4/* .
 **4- Install the vulnerable exim packages that were downloaded from your machine remotely.**
 
 <li>This version of Exim has a critical vulnerability.</li>
-<li>Exim 4.69 Ejecución remota de código mediante desbordamiento del búfer (Desbordar la memoria)</li>
+<li>Exim 4.69 Remote code execution via buffer overflow (Memory overflow)</li>
 
 ```bash
 dpkg -i exim4_4.69-9_all.deb 
@@ -158,7 +158,7 @@ ping 192.168.56.1
 <li>The dd command is a very powerful tool, it cleans, verifies, destroys, duplicates data.</li>
 <li>Copied the partition over a connection using netcat</li>
 <li>What it did was that all the contents of the partition were sent over that connection.</li>
-<li>>The attacker located at 192.168.56.1 listened on that port from your machine and redirected all that output to your machine, thus making a copy of partitions across the network.</li>
+<li>The attacker located at 192.168.56.1 listened on that port from your machine and redirected all that output to your machine, thus making a copy of partitions across the network.</li>
 
 ```bash
 mount
