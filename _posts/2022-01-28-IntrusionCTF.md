@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "La vulnerabilidad que abrió la puerta"
+title:  "The vulnerability that opened the door"
 author: erik
 categories: [ CTF ]
 image: https://user-images.githubusercontent.com/47476901/151602088-45f0ad15-b610-45f7-b935-c8e1664fe8d3.png
