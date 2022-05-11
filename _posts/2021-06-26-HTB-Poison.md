@@ -69,7 +69,7 @@ Ukd4RVdub3dPVU5uUFQwSwo="|base64 -d |base64 -d|base64 -d |base64 -d|base64 -d |b
 The result of the encoded text appears to be a password.
 
 ```
-Contraseña: Charix!2#4%6&8(0
+Password: Charix!2#4%6&8(0
 ```
 
 ## Exploitation: <a name="exploitation"></a>
@@ -93,7 +93,7 @@ Password: Charix!2#4%6&8(0
 
 ## Privilege escalation: <a name="escalacion"></a>
 
-- We found a zip file called secret.zip
+- Found a zip file called secret.zip
 
 ![secretzip](https://user-images.githubusercontent.com/47476901/124363944-3c1fe500-dc36-11eb-9304-d427d8b9ec34.png)
 
@@ -111,13 +111,13 @@ Archive:  secret.zip
 
 ![unzip](https://user-images.githubusercontent.com/47476901/124363947-42ae5c80-dc36-11eb-93f4-a6b0a57103ab.png)
 
-Con el comando:
+With this command:
 ```bash
 ps aux
 ```
 We can check if the root user is running a service...
 - Is running a VNC server on port 5901
-- 
+
 ![ps aux](https://user-images.githubusercontent.com/47476901/124363949-46da7a00-dc36-11eb-89c9-a14fc484bd73.png)
 
 Now we know how to perform the privilege escalation.
@@ -145,7 +145,7 @@ vncviewer 127.0.0.1:5901 -passwd secret
 
 We are already root
 - Root Flag
-- 
+
 ![root txt](https://user-images.githubusercontent.com/47476901/124363970-607bc180-dc36-11eb-9876-f709a43b82a7.png)
 
 **Completed Machine**
