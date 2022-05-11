@@ -29,7 +29,7 @@ ssh-keygen
 
 ![ssh-keygen](https://user-images.githubusercontent.com/47476901/128584495-375f4c41-f1ed-44b2-a6e7-da3c3a9dc5c7.png)
 
-### 2-Recognizable server in the network  <a name="sshreconocible"></a>
+### 2-Recognizable server in the network  <a name="sshrecognizable"></a>
 
 For our computer to be able to connect to the server, they must be in the same network, that is to say, if we launch a ping, both must respond.
 
