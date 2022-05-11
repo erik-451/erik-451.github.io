@@ -35,7 +35,7 @@ I use WSL as machine for the installation.
 Use  `ssh-copy-id root@192.168.20.134` to avoid having to put passwords in the ssh login and facilitate the installation.
 
 ### Download k0sctl <a name="downloadK0sctl"></a>
-We download the software and create a configuration file
+Download the software and create a configuration file
 And we send it to a file where we will configure it in our own way.
 ```bash
 k0sctl init > k0sctl.yaml
@@ -67,7 +67,7 @@ spec:
 ```
 
 ### Install kubernetes on machines using k0sctl <a name="installkuberneteshosts"></a>
-We already have everything ready, we run the program that configures the installation, automating the process
+when everything is ready run the program that configures the installation, automating the process
 
 ```bash
 k0sctl apply --config k0sctl.yaml
@@ -80,7 +80,7 @@ k0sctl apply --config k0sctl.yaml
 ```bash
 sudo apt install kubernetes-client
 ```
-We send the kubernetes configuration to a file called kubeconfig.
+Send the kubernetes configuration to a file called kubeconfig.
 ```bash
 k0sctl kubeconfig > kubeconfig
 ```
@@ -94,7 +94,7 @@ export KUBECONFIG=/opt/kubernetes/kubeconfig
 ```bash
 kubectl get nodes
 ```
-We check that they are already active
+Check that they are already active
 
 ![list-nodes](https://user-images.githubusercontent.com/47476901/165136351-c17db351-0422-4309-a240-de7f94005476.png)
 
@@ -109,7 +109,7 @@ kubectl cluster-info
 
 
 **List detailed information of all nodes:**
-We can see information such as the type of operating system, the use of cpu, ram, the configuration of the node...
+You can see the information such as the type of operating system, the use of cpu, ram, the configuration of the node...
 
 ```bash
 kubectl describe node
