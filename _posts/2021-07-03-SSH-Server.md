@@ -8,7 +8,7 @@ beforetoc: ""
 toc: false
 tags:  [ SSH, Blue Team ]
 ---
-Configuracion basica de SSH
+Basic SSH configuration
 
 # Table of Contents
 1. [Configuring SSH on the server](#configssh)
