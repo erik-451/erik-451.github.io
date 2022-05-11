@@ -29,7 +29,7 @@ PORT    STATE SERVICE  VERSION
 443/tcp open  ssl/http Apache httpd 2.2.22 ((Ubuntu))
 ```
 
-**Puertos:**
+**Ports:**
 - 22 SSH
 - 80 HTTP
 - 443 HTTPS
@@ -104,7 +104,7 @@ Now we have the key
 
 ![clave](https://user-images.githubusercontent.com/47476901/123180085-7ba24080-d482-11eb-9bf4-257b71d7c53d.png)
 ```bash
-Clave: heartbleedbelievethehype
+Key: heartbleedbelievethehype
 ```
 
 Once we have all the necessary information, we try to log into the ssh.
