@@ -143,8 +143,8 @@ vncviewer 127.0.0.1:5901 -passwd secret
 
 ![VNC](https://user-images.githubusercontent.com/47476901/124363966-5c4fa400-dc36-11eb-9487-9f117882af43.png)
 
-Ya somos root
-- Flag de root
+We are already root
+- Root Flag
 - 
 ![root txt](https://user-images.githubusercontent.com/47476901/124363970-607bc180-dc36-11eb-9876-f709a43b82a7.png)
 
