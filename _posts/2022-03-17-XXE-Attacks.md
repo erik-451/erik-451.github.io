@@ -235,3 +235,8 @@ Example:
   &#x25;error;
 '>%el_dtd;]>
 ```
+
+---
+
+Source Labs:
+- [Portswigger Labs](https://portswigger.net/web-security)
