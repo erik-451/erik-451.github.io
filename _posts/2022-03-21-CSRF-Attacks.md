@@ -177,3 +177,6 @@ Referer: https://web-attacker.com/?vulnerable-web.com
    </body>
 </html>
 ```
+Source Labs:
+- [Portswigger Labs](https://portswigger.net/web-security)
+
