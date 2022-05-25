@@ -238,5 +238,5 @@ Example:
 
 ---
 
-Source Labs:
-- [Portswigger Labs](https://portswigger.net/web-security)
+- Source Labs: [Portswigger Labs](https://portswigger.net/web-security)
+- Credits Image: [cobalt.io](https://www.cobalt.io)
