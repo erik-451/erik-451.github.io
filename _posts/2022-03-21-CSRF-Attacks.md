@@ -180,6 +180,5 @@ Referer: https://web-attacker.com/?vulnerable-web.com
 
 ---
 
-Source Labs:
-- [Portswigger Labs](https://portswigger.net/web-security)
-
+- Source Labs: [Portswigger Labs](https://portswigger.net/web-security)
+- Credits Image: [cobalt.io](https://www.cobalt.io)
