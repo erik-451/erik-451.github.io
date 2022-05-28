@@ -6,7 +6,7 @@ categories: [ Web ]
 image: https://user-images.githubusercontent.com/47476901/158905099-e3bd6d01-a91d-486b-8d64-db4dd55f97cd.png
 beforetoc: ""
 toc: false
-tags: [ Web, Bug Bounty, Payloads ]
+tags: [ Web Security, Payloads ]
 ---
 XXE (XML External Entity) attacks are vulnerabilities that arise in applications that parse XML input. Thanks to this an attacker could alter the XML data in the request to execute an attack.
 
