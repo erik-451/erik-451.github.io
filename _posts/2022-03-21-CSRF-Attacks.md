@@ -6,7 +6,7 @@ categories: [ Web ]
 image: https://user-images.githubusercontent.com/47476901/159375082-f0ca6711-c380-41c8-b82d-9e1515ff729e.png
 beforetoc: ""
 toc: false
-tags: [ Web, Bug Bounty, Payloads ]
+tags: [ Web, Web Security, Payloads ]
 ---
 CSRF attacks (Cross-site request forgery) is a type of malicious exploit that aims to perform unauthorized operations that will be executed by a user that the website trusts.
 
