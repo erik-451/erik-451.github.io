@@ -98,7 +98,7 @@ Cause a denial of service by repeatedly calling entity's functions
 ```
 ---
 
-### XXE on SVG <a name="XXEsvg"></a>
+### XXE in SVG <a name="XXEsvg"></a>
 **File inclusion**
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" version="1.1" height="200">
