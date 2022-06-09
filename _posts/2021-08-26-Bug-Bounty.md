@@ -8,7 +8,7 @@ beforetoc: ""
 toc: false
 tags: [ Bug Bounty, Resources ]
 ---
-Recursos para aplicar en un bugbounty
+Some Resources to apply in a bugbounty
 
 # Table of Contents
 1. [Bug Bounty Platforms](#plataforms)
