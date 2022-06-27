@@ -8,6 +8,7 @@ beforetoc: ""
 toc: false
 tags: [ Web Security, Payloads ]
 ---
+
 - JSON Web Tokens (JWT) are a format for sending cryptographically signed JSON data between systems.
 - In theory, they can contain any type of data, but are most commonly used for authentication, session management and access control mechanisms.
 - Unlike classic session tokens, all the data needed by a server is stored client-side within the JWT itself. This makes JWTs a popular choice for highly distributed websites where users need to interact seamlessly with multiple back-end servers. 
@@ -18,15 +19,14 @@ tags: [ Web Security, Payloads ]
   2.1 [JWK](#jwk)
   2.2 [JKU](#jku)
   2.3 [KDI](#kdi)
-3. [Bypass de la autenticación JWT a través de la signature no verificada](#Originallowsnullorigins)
-4. [Bypass de la autenticación JWT a través de la verificación de la firma defectuosa](#CORSinsecurereliableprotocols)
-5. [Bypass de la autenticación JWT mediante una clave de firma débil](#CORSinsecurereliableprotocols)
-6. [Bypass de la autenticación JWT a través de la inyección del encabezado jwk](#CORSinsecurereliableprotocols)
-
+3. [Unverified signature](#Unverifiedsignature)
+4. [Faulty signature verification](#Faultysignatureverification)
+5. [Weak signature key](#Weaksignaturekey)
+6. [Jwk header injection](#Jwkheaderinjection)
 ---
 
 
-#### Firma JWT <a name="jwtsign"></a>
+#### JWT Signature <a name="jwtsign"></a>
 The server issuing the token usually generates the signature by hashing the header and payload. In some cases, they also encrypt the resulting hash. In any case, this process involves a secret key. Without knowing this secret, it is not possible to generate a valid signature for a given header and payload. This provides a mechanism for servers to verify that none of the data has been tampered with since the token was issued, since any change to the header or payload would mean that the signature no longer matches.  
 Knowing the key that generates the signature we will be able to generate tokens to our liking, this would be a problem because we can create a token for example as an administrator. 
 
@@ -94,7 +94,7 @@ Example of the KDI header:
 ```
 ---
 
-**Bypass of JWT authentication through unverified signature**
+**Bypass of JWT authentication through unverified signature** <a name="Unverifiedsignature"></a>
 
 The session cookie is a JWT token.
 ![cookie-LAB1](https://user-images.githubusercontent.com/47476901/176046787-d0bd846a-a2ee-44fd-90a9-07265dfc33ab.png)
@@ -140,7 +140,7 @@ We apply the token to the session and reload the account panel.
 
 ---
 
-**Bypass of JWT authentication through verification of faulty signature**
+**Bypass of JWT authentication through verification of faulty signature** <a name="Faultysignatureverification"></a>
 
 The token system has a bug in the signature configuration that allows modifying the header so we can change the algorithm by which the signature is built and create again a token to our liking.
 
@@ -161,11 +161,11 @@ The token **`does not contain the signature part`** now, since the algorithm val
 
 Account referenced by the token name modified above due to the verification failure.
 
-[adminpanel-LAB2](https://user-images.githubusercontent.com/47476901/176046936-53a5c661-0f55-4f2e-9856-2c2a1cc3f2b0.png)
+![adminpanel-LAB2](https://user-images.githubusercontent.com/47476901/176046936-53a5c661-0f55-4f2e-9856-2c2a1cc3f2b0.png)
 
 ---
-**Bypass of JWT authentication using a weak signature key**.
-
+**Bypass of JWT authentication using a weak signature key**. <a name="Weaksignaturekey"></a>
+Weaksignaturekey
 When the key used to generate the signature is weak, we can do a dictionary attack to try to guess it and thus generate our own valid tokens using a valid signature because we have the key.
 
 We can see that JWT tokens are used in user sessions.
@@ -190,11 +190,11 @@ When we indicate that the key is `secret1` it indicates that the signature is va
 
 We apply it with cookie and it authenticates us with the account to which the token belongs, in this case we indicate the administrator user.
 
-![[🔎Web Security🔎/Vulnerabilidades/JWT/img/admin-LAB3.png]]
+![admin-LAB3](https://user-images.githubusercontent.com/47476901/176048400-42fa6b8c-b09c-4617-907a-f7c67b368855.png)
 
 ---
 
-**bypass of JWT authentication through jwk header injection
+**Bypass of JWT authentication through jwk header injection** <a name="Jwkheaderinjection"></a>
 
 The JSON Web Signature (JWS) specification describes an optional `jwk` header parameter, which servers can use to embed their public key directly inside the token in JWK format.
 
