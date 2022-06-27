@@ -238,3 +238,6 @@ The token structure would look like this:
 If we forward the request with the new token we see that it has been validated and now belongs to the administrator user.
 
 ![adminpannel-LAB4](https://user-images.githubusercontent.com/47476901/176047244-ee0e58db-5c92-4aa4-8925-28b42f01cd29.png)
+
+- Source Labs: [Portswigger Labs](https://portswigger.net/web-security)
+- Credits Image: [Portswigger Labs](https://portswigger.net/web-security)
