@@ -23,6 +23,7 @@ tags: [ Web Security, Payloads ]
 4. [Faulty signature verification](#Faultysignatureverification)
 5. [Weak signature key](#Weaksignaturekey)
 6. [Jwk header injection](#Jwkheaderinjection)
+
 ---
 
 #### JWT Signature <a name="jwtsign"></a>
