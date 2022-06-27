@@ -226,7 +226,7 @@ We apply the JWK header and also change the user parameter to refer to the admin
 
 Click on the attack button and `embedded JWK` to create the signature with the key we have created. 
 
-![attackapplykey-LAB4](https://user-images.githubusercontent.com/47476901/176047143-78bae47d-7d8d-4a47-9049-d2a342e25f15.png)
+![attackapplykey-LAB4](https://user-images.githubusercontent.com/47476901/176051848-fb64981c-e7ba-41d1-b39a-cc306c926e8d.png)
 
 ![option-LAB4](https://user-images.githubusercontent.com/47476901/176047157-29e27610-f6fe-4bff-8ca3-2d0509be0885.png)
 
