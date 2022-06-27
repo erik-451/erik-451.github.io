@@ -163,7 +163,7 @@ Matches our account: Wiener
 
 The token **`does not contain the signature part`** now, since the algorithm value we have modified is now null.
 
-![admintoken-LAB2](https://user-images.githubusercontent.com/47476901/176046916-b1f00c52-0258-4206-9dc2-42caa180b456.png)
+![admintoken-LAB2](https://user-images.githubusercontent.com/47476901/176052011-58cc19e7-feb9-4bf0-ae45-018d60404f51.png)
 
 
 Account referenced by the token name modified above due to the verification failure.
