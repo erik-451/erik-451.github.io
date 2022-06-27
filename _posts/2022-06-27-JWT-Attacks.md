@@ -15,9 +15,9 @@ tags: [ Web Security, Payloads ]
 
 # Table of Contents
 1. [JWT Signature](#jwtsign)
-2. [JWT Headers](#jwtheaders)
-  2.1 [JWK](#jwk)
-  2.2 [JKU](#jku)
+2. [JWT Headers](#jwtheaders)<br>
+  2.1 [JWK](#jwk)<br>
+  2.2 [JKU](#jku)<br>
   2.3 [KDI](#kdi)
 3. [Unverified signature](#Unverifiedsignature)
 4. [Faulty signature verification](#Faultysignatureverification)
@@ -82,7 +82,7 @@ Instead of incorporating public keys directly using the `jwk` header parameter, 
 }
 ```
 
-**KDI** <a name="kfi"></a>
+**KDI** <a name="kdi"></a>
 
 The header of a JWT can contain a `kid` parameter (key ID), which helps the server identify which key to use when verifying the signature.
 
