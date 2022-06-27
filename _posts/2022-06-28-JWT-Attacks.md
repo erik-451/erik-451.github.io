@@ -36,7 +36,7 @@ A JWT consists of 3 parts:
   
 Each of them is separated by a dot, as shown in the following example: 
 
-![JWTexample](https://user-images.githubusercontent.com/47476901/176046736-8aac8f0f-a7ae-456a-b80f-6803f6d215af.png)
+![JWTexample](https://user-images.githubusercontent.com/47476901/176049678-09b365dd-72bc-449a-b3b8-1b5952cd3aa6.png)
 
 #### Headers JWT <a name="jwtheaders"></a>
 
