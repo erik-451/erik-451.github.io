@@ -27,8 +27,14 @@ tags: [ Web Security, Payloads ]
 ---
 
 #### JWT Signature <a name="jwtsign"></a>
-The server issuing the token usually generates the signature by hashing the header and payload. In some cases, they also encrypt the resulting hash. In any case, this process involves a secret key. Without knowing this secret, it is not possible to generate a valid signature for a given header and payload. This provides a mechanism for servers to verify that none of the data has been tampered with since the token was issued, since any change to the header or payload would mean that the signature no longer matches.  
-Knowing the key that generates the signature we will be able to generate tokens to our liking, this would be a problem because we can create a token for example as an administrator. 
+
+The server issuing the token usually generates the signature by hashing the header and payload. 
+
+> This process involves a secret key. Without knowing this key, it is not possible to generate a valid signature for a given header and payload.
+
+This provides a mechanism for servers to verify that none of the data has been tampered with since the token was issued, because any change to the header or payload would mean that the signature no longer matches.
+
+Knowing the key that generates the signature we can generate tokens to our liking, this would be a problem because we can create a token for example as an administrator.
 
 A JWT consists of 3 parts:
   - Header
