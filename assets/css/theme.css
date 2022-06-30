@@ -80,7 +80,6 @@ hr {
 	box-sizing: content-box;
 	height: 0;
 	overflow: visible;
-	border-color: #fff;
 }
 
 h1,
@@ -454,7 +453,7 @@ hr {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 	border: 0;
-	border-top: 1px solid rgba(51, 0, 77, 0.1)
+	border-top: 1px solid rgb(8 255 235 / 10%);
 }
 
 small,
