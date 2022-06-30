@@ -246,6 +246,7 @@ If we forward the request with the new token we see that it has been validated a
 - https://portswigger.net/web-security/jwt
 - https://book.hacktricks.xyz/pentesting-web/hacking-jwt-json-web-tokens
 
+#### Credits
 - Source Labs: [Portswigger Labs](https://portswigger.net/web-security)
 - Credits Image: [Portswigger Labs](https://portswigger.net/web-security)
 
