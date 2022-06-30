@@ -79,7 +79,8 @@ body {
 hr {
 	box-sizing: content-box;
 	height: 0;
-	overflow: visible
+	overflow: visible;
+	border-color: #fff;
 }
 
 h1,
