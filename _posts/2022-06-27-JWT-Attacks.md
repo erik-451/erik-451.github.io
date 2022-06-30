@@ -242,12 +242,12 @@ If we forward the request with the new token we see that it has been validated a
 
 ---
 ##### Good resources:
-- https://auth0.com/docs/secure/tokens
-- https://jwt.io/introduction
-- https://portswigger.net/web-security/jwt
-- https://book.hacktricks.xyz/pentesting-web/hacking-jwt-json-web-tokens
+- [https://auth0.com/docs/secure/tokens](https://auth0.com/docs/secure/tokens)
+- [https://jwt.io/introduction](https://jwt.io/introduction)
+- [https://portswigger.net/web-security/jwt](https://portswigger.net/web-security/jwt)
+- [https://book.hacktricks.xyz/pentesting-web/hacking-jwt-json-web-tokens](https://book.hacktricks.xyz/pentesting-web/hacking-jwt-json-web-tokens)
 
-#### Credits
+##### Credits
 - Source Labs: [Portswigger Labs](https://portswigger.net/web-security)
 - Credits Image: [Portswigger Labs](https://portswigger.net/web-security)
 
