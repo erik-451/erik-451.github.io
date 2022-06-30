@@ -34,6 +34,7 @@ Each of them is separated by a dot, as shown in the following example:
 
 ![JWTexample](https://user-images.githubusercontent.com/47476901/176049678-09b365dd-72bc-449a-b3b8-1b5952cd3aa6.png)
 
+---
 #### Headers JWT <a name="jwtheaders"></a>
 
 **JWK** <a name="jwk"></a>
