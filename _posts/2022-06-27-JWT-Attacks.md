@@ -25,21 +25,10 @@ tags: [ Web Security, Payloads ]
 6. [Jwk header injection](#Jwkheaderinjection)
 
 ---
-
-#### JWT Signature <a name="jwtsign"></a>
-
-The server issuing the token usually generates the signature by hashing the header and payload. 
-
-> This process involves a secret key. Without knowing this key, it is not possible to generate a valid signature for a given header and payload.
-
-This provides a mechanism for servers to verify that none of the data has been tampered with since the token was issued, because any change to the header or payload would mean that the signature no longer matches.
-
-Knowing the key that generates the signature we can generate tokens to our liking, this would be a problem because we can create a token for example as an administrator.
-
 A JWT consists of 3 parts:
-  - Header
-  - Payload
-  - Signature
+  - Header (Contains metadata about the type of token and the cryptographic algorithms used to secure its contents)
+  - Payload (Contains verifiable security statements, such as the identity of the user and the permissions they are allowed)
+  - Signature (Is used to validate that the token is trustworthy and has not been tampered with)
   
 Each of them is separated by a dot, as shown in the following example: 
 
@@ -99,6 +88,17 @@ Example of the KDI header:
     "alg": "RS256"
 }
 ```
+---
+
+#### JWT Signature <a name="jwtsign"></a>
+
+The server issuing the token usually generates the signature by hashing the header and payload. 
+
+> This process involves a secret key. Without knowing this key, it is not possible to generate a valid signature for a given header and payload.
+
+This provides a mechanism for servers to verify that none of the data has been tampered with since the token was issued, because any change to the header or payload would mean that the signature no longer matches.
+
+Knowing the key that generates the signature we can generate tokens to our liking, this would be a problem because we can create a token for example as an administrator.
 ---
 
 **Bypass of JWT authentication through unverified signature** <a name="Unverifiedsignature"></a>
@@ -239,5 +239,13 @@ If we forward the request with the new token we see that it has been validated a
 
 ![adminpannel-LAB4](https://user-images.githubusercontent.com/47476901/176047244-ee0e58db-5c92-4aa4-8925-28b42f01cd29.png)
 
+---
+##### Good resources:
+- https://auth0.com/docs/secure/tokens
+- https://jwt.io/introduction
+- https://portswigger.net/web-security/jwt
+- https://book.hacktricks.xyz/pentesting-web/hacking-jwt-json-web-tokens
+
 - Source Labs: [Portswigger Labs](https://portswigger.net/web-security)
 - Credits Image: [Portswigger Labs](https://portswigger.net/web-security)
+
