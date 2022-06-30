@@ -26,9 +26,9 @@ tags: [ Web Security, Payloads ]
 
 ---
 A JWT consists of 3 parts:
-  - Header (Contains metadata about the type of token and the cryptographic algorithms used to secure its contents)
-  - Payload (Contains verifiable security statements, such as the identity of the user and the permissions they are allowed)
-  - Signature (Is used to validate that the token is trustworthy and has not been tampered with)
+  - **Header** (Contains metadata about the type of token and the cryptographic algorithms used to secure its contents)
+  - **Payload** (Contains verifiable security statements, such as the identity of the user and the permissions they are allowed)
+  - **Signature** (Is used to validate that the token is trustworthy and has not been tampered with)
   
 Each of them is separated by a dot, as shown in the following example: 
 
