@@ -14,11 +14,11 @@ tags: [ Web Security, Payloads ]
 - Unlike classic session tokens, all the data needed by a server is stored client-side within the JWT itself. This makes JWTs a popular choice for highly distributed websites where users need to interact seamlessly with multiple back-end servers. 
 
 # Table of Contents
-1. [JWT Signature](#jwtsign)
-2. [JWT Headers](#jwtheaders)<br>
-  2.1 [JWK](#jwk)<br>
-  2.2 [JKU](#jku)<br>
-  2.3 [KDI](#kdi)
+1. [JWT Headers](#jwtheaders)<br>
+  1.1 [JWK](#jwk)<br>
+  1.2 [JKU](#jku)<br>
+  1.3 [KDI](#kdi)
+2. [JWT Signature](#jwtsign)
 3. [Unverified signature](#Unverifiedsignature)
 4. [Faulty signature verification](#Faultysignatureverification)
 5. [Weak signature key](#Weaksignaturekey)
@@ -99,6 +99,7 @@ The server issuing the token usually generates the signature by hashing the head
 This provides a mechanism for servers to verify that none of the data has been tampered with since the token was issued, because any change to the header or payload would mean that the signature no longer matches.
 
 Knowing the key that generates the signature we can generate tokens to our liking, this would be a problem because we can create a token for example as an administrator.
+
 ---
 
 **Bypass of JWT authentication through unverified signature** <a name="Unverifiedsignature"></a>
