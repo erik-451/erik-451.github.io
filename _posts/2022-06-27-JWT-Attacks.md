@@ -111,7 +111,7 @@ The session cookie is a JWT token.
 
 With a burpsuite extension we can easily decode the tokens.
 We can see that the token contains which user it refers to in the session.
-![JWTdecoded-LAB1](https://user-images.githubusercontent.com/47476901/176046811-b42723b6-3e90-4c4d-bc5e-125f9a2332ea.png)
+![JWTdecoded-LAB1](https://user-images.githubusercontent.com/47476901/178290676-5e18407a-647a-4357-8351-b1d6fd4925d3.png)
 
 ```json
 {
@@ -128,8 +128,7 @@ We can see that the token contains which user it refers to in the session.
 If the web application has not properly configured the token system, it is possible that it does not validate the signature that generates them, thus causing that we can modify the content of the token to our liking making useless the JWT token system.
 
 Taking advantage of this configuration failure, we change the user to administrator
-
-![jwtdecodedadmin-LAB1](https://user-images.githubusercontent.com/47476901/176046830-94e4ab2d-69c5-48ef-a855-4a6c78d23b75.png)
+![jwtdecodedadmin-LAB1](https://user-images.githubusercontent.com/47476901/178290899-2387cfec-e093-401c-bde8-ae83c65aebad.png)
 
 ```json
 {
@@ -165,7 +164,7 @@ Matches our account: Wiener
 
 The token **`does not contain the signature part`** now, since the algorithm value we have modified is now null.
 
-![admintoken-LAB2](https://user-images.githubusercontent.com/47476901/176052076-87f71a69-74b7-4d95-916f-463d4faa5227.png)
+![admintoken-LAB2](https://user-images.githubusercontent.com/47476901/178291538-57ba2cf2-a19b-4521-841d-580b9e45af12.png)
 
 
 Account referenced by the token name modified above due to the verification failure.
