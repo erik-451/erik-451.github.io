@@ -78,6 +78,7 @@ My token: U6vJiRteqjSX46XRk57k6saqolEcdDvQ works for other users too.
 ```
 **The CSRF token is not bound to the session** <a name="CSRFnotBoundSession"></a><br>
 So the same csrf token and the same csrf key could be used in one account as in another to change the email
+We can use CRLF Injection (If exists) to set the key in the CSRF payload.
 ```html
 <html>
   <body>
