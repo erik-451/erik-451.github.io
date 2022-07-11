@@ -38,7 +38,7 @@ Use  `ssh-copy-id root@192.168.20.134` to avoid having to put passwords in the s
 Download the software.
 - You can download the software here: [github.com/K0sctl](https://github.com/k0sproject/k0sctl)
 
-And create a configuration file, send the output init to a yaml file where we will configure it in our own way.
+Create a configuration file, send the output init to a yaml file where we will configure it in our own way.
 ```bash
 k0sctl init > k0sctl.yaml
 ```
