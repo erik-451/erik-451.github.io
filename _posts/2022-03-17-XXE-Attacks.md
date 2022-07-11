@@ -67,7 +67,7 @@ List the local network of the server
 ```
 
 **XXE a RCE** <a name="XXEtoRCE"></a><br>
-Abusing the expect module of php to execute commands (It is required to have this module on the server)
+Abusing the expect module of php to execute commands (Its required have this module on the server to reproduce this)
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?>
  <!DOCTYPE foo [ <!ELEMENT foo ANY >
