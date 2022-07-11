@@ -27,7 +27,8 @@ CSRF attacks (Cross-site request forgery) is a type of malicious exploit that ai
 **CSRF basic mail**<br>
 It makes a request to the endpoint that changes the email and javascript confirms the request, which will change the mail just by visiting the page.
 
-Code from https://web-attacker.com/malicioso.html
+Code from 
+`https://web-attacker.com/malicioso.html`
 
 ```html
 <html>
