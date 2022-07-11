@@ -100,6 +100,7 @@ The token is validated in the cookie, we can make the user create his own csrf t
 ![cookieToken](https://user-images.githubusercontent.com/47476901/159374578-694ad92d-dc4c-43c5-b169-a32c28eebf3f.png)
 
 Since the token was validated in the cookie, we can send the request to change the mail.
+Again we can use CRLF Intection to indicate the token
 
 ```html
 <html>
