@@ -119,6 +119,7 @@ Again we can use CRLF Intection to indicate the token
 ---
 ### CSRF without referrer <a name="CSRFwithoutReferrer"></a>
 We indicate that the Referer does not exist in the CSRF exploit using the meta tag.
+
 Payload:
 ```html
 <meta name="referrer" content="no-referrer">
@@ -159,6 +160,7 @@ Referer: https://web-attacker.com/?vulnerable-web.com
 **Referrer-Policy**
 - Many browsers now remove the query string from the Referrer header by default as a security measure. To override this behavior and ensure that the full URL is included in the request.
 - We have to add in the header "Referrer-Policy: unsafe-url"
+
 Payload:
 ```html
 <meta name="referrer" content="unsafe-url" />
