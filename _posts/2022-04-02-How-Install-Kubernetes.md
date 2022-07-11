@@ -35,9 +35,10 @@ I use WSL as machine for the installation.
 Use  `ssh-copy-id root@192.168.20.134` to avoid having to put passwords in the ssh login and facilitate the installation.
 
 ### Download k0sctl <a name="downloadK0sctl"></a>
-Download the software and create a configuration file
-You can download the software here: [github.com/K0sctl](https://github.com/k0sproject/k0sctl)
-And we send it to a file where we will configure it in our own way.
+Download the software.
+- You can download the software here: [github.com/K0sctl](https://github.com/k0sproject/k0sctl)
+
+And create a configuration file, send the output init to a yaml file where we will configure it in our own way.
 ```bash
 k0sctl init > k0sctl.yaml
 ```
