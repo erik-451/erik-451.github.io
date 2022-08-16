@@ -136,7 +136,7 @@ reboot
 ```
 
 **9- Find the paths to the gcc, memdump binaries.**
-<li>You do not have the memdump binary installed, install it.</li>
+<li>He don't have the memdump binary installed, he installed it.</li>
 <li>memdump does a memory dump</li>
 <li>gcc is a compiler</li>
 
@@ -147,7 +147,7 @@ apt-get install memdump
 halt
 ```
 
-**10- Check if you have a connection to your machine within the network.**
+**10- Check if he have a connection to your machine within the network.**
 
 ```bash
 ifconfig 
