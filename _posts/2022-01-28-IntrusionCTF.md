@@ -40,7 +40,7 @@ Download DiscoS.zip and extract it using the provided password
 ```bash
 unzip discoS.zip
 ```
-![unzip](https://user-images.githubusercontent.com/47476901/151601581-c8a5e5b8-d5ca-48f0-bed3-784c8587ee69.png)
+![unzip](https://user-images.githubusercontent.com/47476901/194938361-56de2fe7-5e06-4ab7-adc2-6469d20d89d3.png)
 
 <a name="mountimg"></a>
 ### 2- Mount the image
@@ -50,7 +50,7 @@ It extracts an image, we will mount this image in a folder to see what it contai
 mkdir disco
 sudo mount discoS.img disco
 ```
-![mount](https://user-images.githubusercontent.com/47476901/151601607-9c2dfb92-f96d-4793-b7d6-42c71a9af47a.png)
+![mount](https://user-images.githubusercontent.com/47476901/194938640-cd199d42-bc79-4738-9901-315b93af9f4a.png)
 
 <a name="analyzecommands"></a>
 ### 3- Analyze command history
@@ -63,6 +63,7 @@ cat root/.bash_history
 
 ### What did the attacker do as an administrator?
 <br>
+
 **1- Removes the exim program from the system**
 
 ```bash
@@ -261,9 +262,9 @@ ${run{/bin/sh -c "exec /bin/sh -c 'useradd --gid root --create-home --password  
 In tmp we can see how the file is <b>c.perl</b> (which generated that connection),
 and a compressed file named  <b>rk.tar</b>
 
-![tmpfiles](https://user-images.githubusercontent.com/47476901/151601785-d6662d80-4c74-4a1a-9d95-ded5142f1266.png)
+![tmpfiles](https://user-images.githubusercontent.com/47476901/194938861-de4a2666-9aec-4841-9d65-cf95831f32d8.png)
 
 
 Analyzing the rk file, we realize that it is a rootkit, which generates a backdoor to the system using iptables and so on.
 
-![rootkit](https://user-images.githubusercontent.com/47476901/151602060-d4c88931-3218-4611-8a43-ff6eddf33892.png)
+![rootkit](https://user-images.githubusercontent.com/47476901/194938944-93028c7d-166c-49db-968c-f96605dac023.png)
