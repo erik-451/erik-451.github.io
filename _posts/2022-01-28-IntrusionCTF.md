@@ -267,4 +267,4 @@ and a compressed file named  <b>rk.tar</b>
 
 Analyzing the rk file, we realize that it is a rootkit, which generates a backdoor to the system using iptables and so on.
 
-![rootkit](https://user-images.githubusercontent.com/47476901/194938944-93028c7d-166c-49db-968c-f96605dac023.png)
+![rootkit](https://user-images.githubusercontent.com/47476901/194939005-496f05b0-0671-4798-b21c-23bda1748505.png)
