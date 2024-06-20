@@ -11,14 +11,6 @@
       <script src="{{ site.baseurl }}/assets/js/jquery.min.js"></script>
    </head>
    {% if jekyll.environment == 'production' %}
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LY9MKYH3JM');
-</script>
-
    {% endif %}
    {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
    <body>
